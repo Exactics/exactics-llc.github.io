@@ -1,10 +1,125 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title> Exactics</title>
-  </head>
-  <body>
-    <p> exactics </p>
-  </body>
+
+<html>
+    <head>
+        <title>exactics - demo</title>
+
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+
+        <link href="index.css" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="nav__title">
+                <img src="img/logo.svg" alt="exactics logo">
+            </div>
+            <div class="nav__buttons">
+                <!--a class="nav__button" href="#">
+                    Learn more
+                </a-->
+                <a class="nav__button" href="#">
+                    Contact
+                </a>
+            </div>
+        </nav>
+
+        <main>
+
+            <section class="section section--about">
+                <div class="section__container">
+                    <h1 class="h1">About Exactics</h1>
+
+                    <p>
+                        Williamsburg poke selfies cornhole raw denim cray. Meh
+                        humblebrag ethical umami slow-carb ramps, snackwave
+                        distillery master cleanse forage tattooed asymmetrical
+                        offal banh mi. Try-hard typewriter migas slow-carb
+                        affogato tumeric fam green juice tattooed locavore.
+                        Sriracha biodiesel small batch iPhone kinfolk wayfarers
+                        keffiyeh venmo truffaut disrupt cliche.
+                    </p>
+
+                    <p>
+                        Tumeric pork belly roof party selvage, vegan you
+                        probably haven't heard of them kale chips aesthetic
+                        twee listicle brooklyn. Meditation marfa cold-pressed
+                        typewriter letterpress raw denim humblebrag.
+                        Dreamcatcher live-edge mlkshk tousled VHS schlitz
+                        tumeric offal meh chicharrones. Tattooed kogi copper
+                        mug messenger bag disrupt, flexitarian neutra lo-fi
+                        craft beer keffiyeh master cleanse. Pug bitters
+                        gastropub offal cronut poke lyft ennui. Small batch
+                        next level normcore, franzen neutra fingerstache 8-bit.
+                        Mlkshk you probably haven't heard of them literally
+                        brunch authentic affogato lo-fi poke.
+                    </p>
+
+                    <a class="button" href="#">
+                        Learn more
+                    </a>
+                </div>
+            </section>
+
+
+            <section class="section section--quicklyme">
+                <div class="section__carton">
+                    <span>BOX<br/>ART<br/>PLACEHOLDER</span>
+                    <canvas id="carton"></canvas>
+                </div>
+                <div class="section__container">
+                    <h1 class="h1">Quicklyme</h1>
+
+                    <p>
+                        Franzen snackwave craft beer synth mlkshk iPhone
+                        normcore gluten-free whatever polaroid unicorn next
+                        level everyday carry chillwave. Roof party yuccie fanny
+                        pack vaporware hella, blog skateboard la croix.
+                        Live-edge biodiesel PBR&amp;B blog kinfolk slow-carb
+                        try-hard DIY. Health goth waistcoat mixtape etsy
+                        seitan.  Aesthetic selfies austin messenger bag.
+
+                    </p>
+
+                    <p>
+                        Banh mi brunch four dollar toast vegan art party banjo
+                        selvage. Gochujang taiyaki polaroid viral waistcoat
+                        narwhal cold-pressed four dollar toast wayfarers
+                        listicle street art. Butcher snackwave artisan, banh mi
+                        mumblecore portland try-hard mlkshk hot chicken kale
+                        chips direct trade. Crucifix try-hard ennui brunch
+                        tousled, lyft asymmetrical brooklyn heirloom beard deep
+                        v unicorn letterpress affogato trust fund. Post-ironic
+                        cardigan aesthetic health goth photo booth, church-key
+                        irony.
+                    </p>
+
+                    <a class="button" href="#">
+                        Learn more
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer__left">
+                &copy; 2021 Exactics LLC
+            </div>
+            <div class="footer__right">
+                <div class="footer__address">
+                    Exactics LLC<br/>
+                    9 Medford St<br/>
+                    Somerville, MA<br/>
+                    02143
+                </div>
+            </div>
+        </footer>
+
+        <canvas id="c"></canvas>
+
+        <script src="index.mjs" type="module"></script>
+    </body>
 </html>
