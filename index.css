@@ -204,7 +204,7 @@ footer {
 .waitlist__form {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: baseline;
     justify-content: center;
 
     margin-top: 0.5em;
