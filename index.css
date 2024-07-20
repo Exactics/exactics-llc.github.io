@@ -33,7 +33,7 @@ body {
 
 /* --- TYPOGRAPHY --- */
 
-a {
+a, button {
     color: var(--cta);
     text-decoration: none;
     transition: color 0.1s cubic-bezier(0,0,0.3,1),
@@ -41,14 +41,32 @@ a {
 
     padding: 3px 6px;
 }
-a:hover {
+a:hover, button:hover {
     color: var(--white);
     background-color: var(--cta);
 }
 
-a.button {
+a.button, button {
     border: 1px solid var(--cta);
     border-radius: 2px;
+}
+
+button {
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid var(--cta);
+    border-radius: 0px;
+
+    outline: 0;
+    background-color: rgba(0,0,0,0);
+    font-size: inherit;
+    font-family: inherit;
 }
 
 h1 {
@@ -179,4 +197,34 @@ footer {
 
 .footer__address {
     padding: 0 4em;
+}
+
+/* --- WAITLIST --- */
+
+.waitlist__form {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+
+    margin-top: 0.5em;
+    will-change: opacity;
+    transition: opacity 0.25s cubic-bezier(0,0,0.3,1);
+}
+
+@media (max-width: 768px) {
+    .waitlist__form {
+        flex-direction: column;
+    }
+    
+}
+
+.waitlist__form input {
+    flex-grow: 1;
+    margin-right: 1em;
+}
+
+.waitlist__form.waitlist__form--loading {
+    opacity: 0.6;
+    pointer-events: none;
 }

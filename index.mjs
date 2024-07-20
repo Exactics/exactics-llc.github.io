@@ -266,6 +266,52 @@ class CartonDriver {
     }
 
 }
+
+class WaitlistSignup {
+    constructor(form_selector) {
+        this.form = document.querySelector(form_selector)
+
+        this.form.addEventListener(
+            'submit',
+            this.handleForm.bind(this)
+        )
+    }
+
+    async handleForm(e) {
+        e.preventDefault()
+
+        this.form.classList.add('waitlist__form--loading')
+
+        const email_inp = this.form.querySelector('input[type="email"]')
+
+        console.log(email_inp.value)
+
+        let r = await fetch('https://link.exactics.science/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email_inp.value
+            })
+        })
+
+        r = await r.json()
+
+
+        if (r.ok) {
+            Swal.fire({
+              title: 'You\'re on the list!',
+              text: 'We\'ll be in touch when we\'re ready to launch.',
+              icon: 'success'
+            })
+
+            this.form.classList.remove('')
+            email_inp.value = ''
+        }
+
+    }
+}
  
 window.onload = () => {
     window.cd = new CanvasDriver()
@@ -273,5 +319,7 @@ window.onload = () => {
 
     window.onresize = () => cd.on_window_resize()
     window.addEventListener('mousemove', e => cd.on_mouse_move(e))
+
+    window.waitlist_handler = new WaitlistSignup('#waitlist')
 }
 
