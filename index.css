@@ -217,6 +217,13 @@ footer {
         flex-direction: column;
     }
     
+    .waitlist__form button {
+        margin-top: 0.5em;
+    }
+
+    .waitlist__form input {
+        align-self: stretch;
+    }
 }
 
 .waitlist__form input {

@@ -306,7 +306,7 @@ class WaitlistSignup {
               icon: 'success'
             })
 
-            this.form.classList.remove('')
+            this.form.classList.remove('waitlist__form--loading')
             email_inp.value = ''
         }
 
