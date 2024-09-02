@@ -49,6 +49,18 @@
               cursor: pointer;
             }
 
+            /* Centering the main content */
+            main {
+              display: flex;
+              flex-direction: column;
+              align-items: center; /* Center all sections horizontally */
+              justify-content: center;
+              margin: 0 auto;
+              padding: 20px;
+              width: 100%;
+              max-width: 1200px; /* Optional: Control max width */
+            }
+
             /* Container for centering content */
             .section__container {
               display: flex;
@@ -56,7 +68,7 @@
               align-items: center; /* Center content horizontally */
               text-align: center; /* Center text if needed */
               max-width: 800px;
-              margin: auto; /* Center section on the page */
+              margin: 20px auto; /* Center section and add some margin */
             }
 
             /* Video container styles */
@@ -89,17 +101,12 @@
                 <img src="img/logo.svg" alt="exactics logo">
             </a>
             <div class="nav__buttons">
-                <!--
-                   <a class="nav__button" href="/about.html">
-                    Learn more
-                </a> 
-                -->
                 <a class="nav__button" href="mailto:business@exacticsbiotech.com">Contact</a>
             </div>
         </nav>
 
         <main>
-
+            <!-- About Us Section -->
             <section class="section section--about">
                 <div class="section__container">
                     <h1 class="h1">About Us</h1>
@@ -163,6 +170,7 @@
                 </div>
             </section>
 
+            <!-- QuickLyme Section -->
             <section class="section section--quicklyme">
                 <div class="section__carton" style="opacity: 0;">
                     <span>BOX<br/>ART<br/>PLACEHOLDER</span>
@@ -205,6 +213,4 @@
         <canvas id="c"></canvas>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="index.mjs" type="module"></script>
-    </body>
-</html>
+        <script src="index.mjs" type
