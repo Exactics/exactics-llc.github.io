@@ -1,6 +1,6 @@
 import * as THREE from './lib/three.module.js'
 
-const BALL_COUNT = 40
+const BALL_COUNT = 30
 const SHINY_COUNT = 4
 const CAMERA_MOVE_MODIFIER = 1
 const CARTON_MOVE_MODIFIER = 2
@@ -50,7 +50,7 @@ class CanvasDriver {
             this.meshes.push({
                 mesh: new THREE.Mesh(geometry1, wireframeMaterial),
                 heading: this.make_new_heading(),
-                rotation: this.make_new_heading().multiplyScalar(1/100)
+                rotation: this.make_new_heading().multiplyScalar(1/200)
             })
 
         }
@@ -59,7 +59,7 @@ class CanvasDriver {
             this.meshes.push({
                 mesh: new THREE.Mesh(geometry1, material),
                 heading: this.make_new_heading(),
-                rotation: this.make_new_heading().multiplyScalar(1/100)
+                rotation: this.make_new_heading().multiplyScalar(1/200)
             })
 
         }
