@@ -1,6 +1,6 @@
 import * as THREE from './lib/three.module.js'
 
-const BALL_COUNT = 50
+const BALL_COUNT = 40
 const SHINY_COUNT = 4
 const CAMERA_MOVE_MODIFIER = 1
 const CARTON_MOVE_MODIFIER = 2
@@ -176,7 +176,7 @@ class CanvasDriver {
 
         obj.target = target.clone()
         // create a heading
-        const heading = target.sub(obj.mesh.position).normalize().multiplyScalar(5)
+        const heading = target.sub(obj.mesh.position).normalize().multiplyScalar(2)
 
         obj.heading = heading
 
