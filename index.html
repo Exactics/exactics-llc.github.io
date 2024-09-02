@@ -1,216 +1,318 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Exactics</title>
-        <meta content="width=device-width, initial-scale=1" name="viewport">
-        <link href="index.css" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-        <link rel="icon" type="image/png" href="/img/favicon.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exactics</title>
+    
+    <!-- Stylesheets and Fonts -->
+    <link href="index.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
 
-        <style>
-            /* Popup container */
-            .popup {
-              display: none; /* Hidden by default */
-              position: fixed; /* Stay in place */
-              z-index: 1; /* Sit on top */
-              left: 0;
-              top: 0;
-              width: 100%; /* Full width */
-              height: 100%; /* Full height */
-              overflow: auto; /* Enable scroll if needed */
-              background-color: rgb(0,0,0); /* Fallback color */
-              background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            }
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
+    <meta property="og:url" content="https://exacticsbiotech.com">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Exactics">
+    <meta property="og:description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="exacticsbiotech.com">
+    <meta property="twitter:url" content="https://exacticsbiotech.com">
+    <meta name="twitter:title" content="Exactics">
+    <meta name="twitter:description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
+    
+    <!-- Inline Styles for Page Layout and Design -->
+    <style>
+        /* General Reset and Styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
 
-            /* Popup content */
-            .popup-content {
-              background-color: #fefefe;
-              margin: 15% auto; /* 15% from the top and centered */
-              padding: 20px;
-              border: 1px solid #888;
-              width: 80%; /* Could be more or less, depending on screen size */
-            }
+        nav {
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-            /* Close button */
-            .close {
-              color: #aaa;
-              float: right;
-              font-size: 28px;
-              font-weight: bold;
-            }
+        nav .nav__title img {
+            height: 40px;
+        }
 
-            .close:hover,
-            .close:focus {
-              color: black;
-              text-decoration: none;
-              cursor: pointer;
-            }
+        nav .nav__buttons a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 20px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-            /* Centering the main content */
-            main {
-              display: flex;
-              flex-direction: column;
-              align-items: center; /* Center all sections horizontally */
-              justify-content: center;
-              margin: 0 auto;
-              padding: 20px;
-              width: 100%;
-              max-width: 1200px; /* Optional: Control max width */
-            }
+        nav .nav__buttons a:hover {
+            background-color: #333;
+            color: #fff;
+        }
 
-            /* Container for centering content */
-            .section__container {
-              display: flex;
-              flex-direction: column;
-              align-items: center; /* Center content horizontally */
-              text-align: center; /* Center text if needed */
-              max-width: 800px;
-              margin: 20px auto; /* Center section and add some margin */
-            }
+        main {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-            /* Video container styles */
-            .video-container {
-              margin-top: 20px; /* Adds some spacing above the video */
-            }
-        </style>
+        .section {
+            width: 100%;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
 
-        <!-- HTML Meta Tags -->
-        <meta name="description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
+        .section__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-        <!-- Facebook Meta Tags -->
-        <meta property="og:url" content="https://exacticsbiotech.com">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Exactics">
-        <meta property="og:description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
-        <meta property="og:image" content="">
+        .h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-        <!-- Twitter Meta Tags -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta property="twitter:domain" content="exacticsbiotech.com">
-        <meta property="twitter:url" content="https://exacticsbiotech.com">
-        <meta name="twitter:title" content="Exactics">
-        <meta name="twitter:description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
-        <meta name="twitter:image" content="">
-    </head>
-    <body>
-        <nav>
-            <a class="nav__title" href="https://exacticsbiotech.com/">
-                <img src="img/logo.svg" alt="exactics logo">
-            </a>
-            <div class="nav__buttons">
-                <a class="nav__button" href="mailto:business@exacticsbiotech.com">Contact</a>
-            </div>
-        </nav>
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 20px;
+        }
 
-        <main>
-            <!-- About Us Section -->
-            <section class="section section--about">
-                <div class="section__container">
-                    <h1 class="h1">About Us</h1>
+        .waitlist__form {
+            display: flex;
+            margin-bottom: 10px;
+        }
 
-                    <p>
-                        In 2018, Julian Kage, CEO and Founder of Exactics, invented and patented 
-                        QuickLyme, the first 15-minute rapid test for Lyme disease. He secured a 
-                        second patent for a versatile core test design adaptable to over 200 
-                        arthropod-borne diseases, including Malaria, Zika, and Dengue Fever. This 
-                        novel design enables easy antibody swaps, allowing for customizable tests 
-                        across various diseases while keeping minimizing manufacturing costs.
-                    </p>
+        .waitlist__input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            flex: 1;
+        }
 
-                    <br><br>
-                    <b>Join our waitlist</b>
+        .button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+            transition: background-color 0.3s ease;
+        }
 
-                    <form class="waitlist__form" id="waitlist">
-                        <input class="waitlist__input" required="true" type="email" placeholder="example@exacticsbiotech.com">
-                        <button type="submit" class="button">Join</button>
-                    </form>
-                    <p><small>By clicking 'Join', you agree to our <a href="#" id="openPrivacyPopup">Privacy Policy.</a></small></p>
+        .button:hover {
+            background-color: #0056b3;
+        }
 
-                    <!-- The Popup -->
-                    <div id="privacyPopup" class="popup">
-                        <div class="popup-content">
-                            <span class="close">&times;</span>
-                            <h2>Privacy Policy</h2>
-                            <div name="termly-embed" data-id="caa3a2f8-64b1-4dbc-9e9c-8aef65c06da5"></div>
-                            <script type="text/javascript">
-                                (function(d, s, id) {
-                                  var js, tjs = d.getElementsByTagName(s)[0];
-                                  if (d.getElementById(id)) return;
-                                  js = d.createElement(s); js.id = id;
-                                  js.src = "https://app.termly.io/embed-policy.min.js";
-                                  tjs.parentNode.insertBefore(js, tjs);
-                                }(document, 'script', 'termly-jssdk'));
-                            </script>
-                        </div>
+        .video-container {
+            margin-top: 20px;
+        }
+
+        iframe {
+            border: none;
+            border-radius: 8px;
+        }
+
+        footer {
+            width: 100%;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer__left,
+        .footer__right {
+            margin-bottom: 10px;
+        }
+
+        .footer__address {
+            line-height: 1.6;
+        }
+
+        /* Popup container */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* Animated Background Canvas */
+        #c {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a class="nav__title" href="https://exacticsbiotech.com/">
+            <img src="img/logo.svg" alt="Exactics logo">
+        </a>
+        <div class="nav__buttons">
+            <a class="nav__button" href="mailto:business@exacticsbiotech.com">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- About Us Section -->
+        <section class="section section--about">
+            <div class="section__container">
+                <h1 class="h1">About Us</h1>
+                <p>
+                    In 2018, Julian Kage, CEO and Founder of Exactics, invented and patented QuickLyme, the first 15-minute rapid test for Lyme disease. He secured a second patent for a versatile core test design adaptable to over 200 arthropod-borne diseases, including Malaria, Zika, and Dengue Fever. This novel design enables easy antibody swaps, allowing for customizable tests across various diseases while minimizing manufacturing costs.
+                </p>
+                <b>Join our waitlist</b>
+                <form class="waitlist__form" id="waitlist">
+                    <input class="waitlist__input" required type="email" placeholder="example@exacticsbiotech.com">
+                    <button type="submit" class="button">Join</button>
+                </form>
+                <p><small>By clicking 'Join', you agree to our <a href="#" id="openPrivacyPopup">Privacy Policy.</a></small></p>
+
+                <!-- The Popup -->
+                <div id="privacyPopup" class="popup">
+                    <div class="popup-content">
+                        <span class="close">&times;</span>
+                        <h2>Privacy Policy</h2>
+                        <div name="termly-embed" data-id="caa3a2f8-64b1-4dbc-9e9c-8aef65c06da5"></div>
+                        <script type="text/javascript">
+                            (function(d, s, id) {
+                                var js, tjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id)) return;
+                                js = d.createElement(s); js.id = id;
+                                js.src = "https://app.termly.io/embed-policy.min.js";
+                                tjs.parentNode.insertBefore(js, tjs);
+                            }(document, 'script', 'termly-jssdk'));
+                        </script>
                     </div>
-
-                    <script>
-                        var popup = document.getElementById("privacyPopup");
-                        var btn = document.getElementById("openPrivacyPopup");
-                        var span = document.getElementsByClassName("close")[0];
-
-                        btn.onclick = function(event) {
-                            event.preventDefault();
-                            popup.style.display = "block";
-                        }
-
-                        span.onclick = function() {
-                            popup.style.display = "none";
-                        }
-
-                        window.onclick = function(event) {
-                            if (event.target == popup) {
-                                popup.style.display = "none";
-                            }
-                        }
-                    </script>
-                </div>
-            </section>
-
-            <!-- QuickLyme Section -->
-            <section class="section section--quicklyme">
-                <div class="section__carton" style="opacity: 0;">
-                    <span>BOX<br/>ART<br/>PLACEHOLDER</span>
-                    <canvas id="carton"></canvas>
-                </div>
-                <div class="section__container">
-                    <h1 class="h1">QuickLyme&reg;</h1>
-
-                    <p>
-                        Julian Kage, CEO of Exactics, developed QuickLyme, a rapid test 
-                        that detects Lyme bacteria in ticks within 15 minutes and secured a patent 
-                        with support from the Ford Foundation. Julian leads Exactics alongside Zach 
-                        Sarmoen (CFO), Dylan Murray (COO), Sean Greeby (CSO), and Max Almeida (CTO). 
-                        Our advisory board includes experts from Harvard Medical School, the University 
-                        of Chicago, Lagos State University, and the University of Ibadan.
-                    </p>
-
-                    <!-- YouTube Video Embed -->
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/-ClR1yWZf1s?si=JMawsX-WjT7kEnOj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class="footer__left">
-                &copy; 2024 Exactics LLC. All rights reserved.
-            </div>
-            <div class="footer__right">
-                <div class="footer__address">
-                    Exactics LLC<br/>
-                    361 Main St<br/>
-                    Manchester, CT<br/>
-                    06040
                 </div>
             </div>
-        </footer>
+        </section>
 
-        <canvas id="c"></canvas>
+        <!-- QuickLyme Section -->
+        <section class="section section--quicklyme">
+            <div class="section__container">
+                <h1 class="h1">QuickLyme&reg;</h1>
+                <p>
+                    Julian Kage, CEO of Exactics, developed QuickLyme, a rapid test that detects Lyme bacteria in ticks within 15 minutes and secured a patent with support from the Ford Foundation. Julian leads Exactics alongside Zach Sarmoen (CFO), Dylan Murray (COO), Sean Greeby (CSO), and Max Almeida (CTO). Our advisory board includes experts from Harvard Medical School, the University of Chicago, Lagos State University, and the University of Ibadan.
+                </p>
+                <!-- YouTube Video Embed -->
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-ClR1yWZf1s?si=JMawsX-WjT7kEnOj" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="index.mjs" type
+    <!-- Footer -->
+    <footer>
+        <div class="footer__left">
+            &copy; 2024 Exactics LLC. All rights reserved.
+        </div>
+        <div class="footer__right">
+            <div class="footer__address">
+                Exactics LLC<br/>
+                361 Main St<br/>
+                Manchester, CT<br/>
+                06040
+            </div>
+        </div>
+    </footer>
+
+    <!-- Animated Background Canvas -->
+    <canvas id="c"></canvas>
+
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="index.mjs" type="module"></script>
+
+    <!-- JavaScript for Popup Functionality -->
+    <script>
+        var popup = document.getElementById("privacyPopup");
+        var btn = document.getElementById("openPrivacyPopup");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function(event) {
+            event.preventDefault();
+            popup.style.display = "block";
+        }
+
+        span.onclick = function() {
+            popup.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == popup) {
+                popup.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
