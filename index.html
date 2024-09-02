@@ -1,262 +1,665 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Specifies the character encoding for the HTML document -->
+    <meta charset="UTF-8">
+    
+    <!-- Sets the viewport to ensure proper scaling on different devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title of the webpage displayed in the browser tab -->
+    <title>Exactics</title>
+    
+    <!-- Link to the external CSS file for styles -->
+    <link href="index.css" rel="stylesheet">
+    
+    <!-- Preconnect to Google Fonts to improve loading performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Import Google Fonts (Inter font family) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Favicon and Apple Touch Icon for website branding on browser tabs and mobile devices -->
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
 
-<html>
-    <head>
-        <title>Exactics</title>
+    <!-- SEO Meta Tags for search engines and social media sharing -->
+    <meta name="description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
+    <meta property="og:url" content="https://exacticsbiotech.com">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Exactics">
+    <meta property="og:description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="exacticsbiotech.com">
+    <meta property="twitter:url" content="https://exacticsbiotech.com">
+    <meta name="twitter:title" content="Exactics">
+    <meta name="twitter:description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
+    
+    <!-- Inline Styles for Page Layout and Design -->
+    <style>
+        /* General styles for the body, applying font, margin, and background settings */
+        body {
+            font-family: 'Inter', sans-serif; /* Sets font family to Inter */
+            margin: 0; /* Removes default margin */
+            padding: 0; /* Removes default padding */
+            display: flex; /* Uses flexbox for layout */
+            flex-direction: column; /* Stacks elements vertically */
+            align-items: center; /* Centers items horizontally */
+            background-color: #f4f4f4; /* Sets background color */
+            overflow-x: hidden; /* Prevents horizontal overflow */
+        }
 
+        /* Styles for the navigation bar */
+        nav {
+            width: 100%; /* Full width */
+            padding: 20px; /* Padding around content */
+            background-color: #fff; /* White background */
+            display: flex; /* Flexbox layout */
+            justify-content: space-between; /* Space between logo and buttons */
+            align-items: center; /* Centers items vertically */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+            position: relative; /* Positioned relative to parent */
+            z-index: 10; /* Ensures it stays on top of the canvas */
+        }
 
+        /* Style for the logo inside the navigation bar */
+        nav .nav__title img {
+            height: 40px; /* Sets logo height */
+        }
 
-        <meta content="width=device-width, initial-scale=1" name="viewport">
+        /* Style for navigation buttons */
+        nav .nav__buttons a {
+            text-decoration: none; /* Removes underline */
+            color: #333; /* Text color */
+            padding: 10px 20px; /* Padding around text */
+            border: 1px solid #333; /* Border around button */
+            border-radius: 4px; /* Rounds corners */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition on hover */
+        }
 
-        <link href="index.css" rel="stylesheet">
+        /* Hover effect for navigation buttons */
+        nav .nav__buttons a:hover {
+            background-color: #333; /* Background color on hover */
+            color: #fff; /* Text color on hover */
+        }
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+        /* Main container styles */
+        main {
+            width: 100%; /* Full width */
+            max-width: 1200px; /* Maximum width for large screens */
+            padding: 40px 20px; /* Padding around content */
+            display: flex; /* Flexbox layout */
+            flex-direction: column; /* Stacks sections vertically */
+            align-items: center; /* Centers items horizontally */
+            position: relative; /* Positioned relative to parent */
+            z-index: 10; /* Ensures it stays on top of the canvas */
+        }
 
-        <link rel="icon" type="image/png" href="/img/favicon.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+        /* Style for each section of content */
+        .section {
+            width: 100%; /* Full width */
+            margin-bottom: 40px; /* Space below each section */
+            padding: 20px; /* Padding inside section */
+            background-color: #fff; /* White background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border-radius: 8px; /* Rounded corners */
+            position: relative; /* Positioned relative to parent */
+            z-index: 5; /* Stays above background */
+        }
 
-        <style>
-            /* Popup container */
-            .popup {
-              display: none; /* Hidden by default */
-              position: fixed; /* Stay in place */
-              z-index: 1; /* Sit on top */
-              left: 0;
-              top: 0;
-              width: 100%; /* Full width */
-              height: 100%; /* Full height */
-              overflow: auto; /* Enable scroll if needed */
-              background-color: rgb(0,0,0); /* Fallback color */
-              background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            }
-        
-            /* Popup content */
-            .popup-content {
-              background-color: #fefefe;
-              margin: 15% auto; /* 15% from the top and centered */
-              padding: 20px;
-              border: 1px solid #888;
-              width: 80%; /* Could be more or less, depending on screen size */
-            }
-        
-            /* Close button */
-            .close {
-              color: #aaa;
-              float: right;
-              font-size: 28px;
-              font-weight: bold;
-            }
-        
-            .close:hover,
-            .close:focus {
-              color: black;
-              text-decoration: none;
-              cursor: pointer;
-            }
-        </style>
+        /* Container within each section for content alignment */
+        .section__container {
+            display: flex; /* Flexbox layout */
+            flex-direction: column; /* Stacks items vertically */
+            align-items: center; /* Centers items horizontally */
+            text-align: center; /* Centers text */
+            max-width: 800px; /* Maximum width for large screens */
+            margin: 0 auto; /* Centers container within section */
+        }
 
-          <!-- HTML Meta Tags -->
-        
-        <meta name="description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
+        /* Style for headers */
+        .h1 {
+            font-size: 2rem; /* Font size */
+            margin-bottom: 20px; /* Space below header */
+            color: #333; /* Text color */
+        }
 
-        <!-- Facebook Meta Tags -->
-        <meta property="og:url" content="https://exacticsbiotech.com">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Exactics">
-        <meta property="og:description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
-        <meta property="og:image" content="">
+        /* Style for paragraphs */
+        p {
+            font-size: 1rem; /* Font size */
+            line-height: 1.6; /* Line spacing */
+            color: #666; /* Text color */
+            margin-bottom: 20px; /* Space below paragraph */
+        }
 
-        <!-- Twitter Meta Tags -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta property="twitter:domain" content="exacticsbiotech.com">
-        <meta property="twitter:url" content="https://exacticsbiotech.com">
-        <meta name="twitter:title" content="Exactics">
-        <meta name="twitter:description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
-        <meta name="twitter:image" content="">
+        /* Styles for the waitlist form */
+        .waitlist__form {
+            display: flex; /* Flexbox layout */
+            margin-bottom: 10px; /* Space below form */
+        }
 
-        <!-- Meta Tags Generated via https://www.opengraph.xyz -->
-    </head>
-    <body>
-        <nav>
-            <a class="nav__title"  href="https://exacticsbiotech.com/">
-                <img src="img/logo.svg" alt="exactics logo">
-            </a>
-            <div class="nav__buttons">
-                <!--
-                   <a 9class="nav__button" href="/about.html">
-                    Learn more
-                </a> 
-                -->
-                
-                <a class="nav__button" href="mailto:business@exacticsbiotech.com">
-                    Contact
-                </a>
-            </div>
-        </nav>
+        /* Input field style in the waitlist form */
+        .waitlist__input {
+            padding: 10px; /* Padding inside input */
+            font-size: 1rem; /* Font size */
+            border: 1px solid #ddd; /* Border around input */
+            border-radius: 4px 0 0 4px; /* Rounded left corners */
+            flex: 1; /* Takes up remaining space */
+        }
 
-        <main>
+        /* Style for buttons */
+        .button {
+            padding: 10px 20px; /* Padding around text */
+            font-size: 1rem; /* Font size */
+            border: none; /* Removes border */
+            background-color: #007bff; /* Background color */
+            color: #fff; /* Text color */
+            cursor: pointer; /* Changes cursor on hover */
+            border-radius: 0 4px 4px 0; /* Rounded right corners */
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
 
-            <section class="section section--about">
-                <div class="section__container">
-                    <h1 class="h1">About Exactics</h1>
+        /* Hover effect for buttons */
+        .button:hover {
+            background-color: #0056b3; /* Background color on hover */
+        }
 
-                    <p>
-                        Exactics is dedicated to the development and 
-                        manufacturing of rapid, reliable, and cost-effective 
-                        innovative diagnostic technologies. We provide contract 
-                        assay research and development to meet the individual 
-                        needs of laboratories. Capable of operating on both micro 
-                        and macro scales, we are devoted to helping laboratories 
-                        across the world further their own research as 
-                        cost-effectively and accurately as possible.
+        /* Style for video container */
+        .video-container {
+            margin-top: 20px; /* Space above video */
+        }
 
-                    </p>
+        /* Style for iframe (YouTube video) */
+        iframe {
+            border: none; /* Removes border */
+            border-radius: 8px; /* Rounded corners */
+        }
 
-                    <br>
-                    <br>
-                    <b>Join our waitlist</b>
+        /* Footer styles */
+        footer {
+            width: 100%; /* Full width */
+            padding: 20px; /* Padding around content */
+            background-color: #333; /* Background color */
+            color: #fff; /* Text color */
+            text-align: center; /* Centers text */
+        }
 
-                    <form class="waitlist__form " id="waitlist">
-                        <input class="waitlist__input" required="true" type="email" placeholder="example@exacticsbiotech.com">
-                        <button type="submit" class="button">
-                            Join -->
-                        </button>
-                    </form>
-                    <!-- Text with a hyperlinked word -->
-                    <p><small>By clicking 'Join', you agree to our <a href="#" id="openPrivacyPopup">Privacy Policy.</small></a></p>
+        /* Footer left and right container styles */
+        .footer__left,
+        .footer__right {
+            margin-bottom: 10px; /* Space below each container */
+        }
 
-                    <!-- The Popup -->
-                    <div id="privacyPopup" class="popup">
+        /* Style for address in footer */
+        .footer__address {
+            line-height: 1.6; /* Line spacing */
+        }
+
+        /* Popup container for Privacy Policy */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            z-index: 100; /* High z-index to stay on top */
+            left: 0; /* Left edge of the screen */
+            top: 0; /* Top edge of the screen */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enables scrolling if needed */
+            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+        }
+
+        /* Content within the popup */
+        .popup-content {
+            background-color: #fefefe; /* White background */
+            margin: 15% auto; /* Centers vertically and horizontally */
+            padding: 20px; /* Padding inside content */
+            border: 1px solid #888; /* Border around content */
+            width: 80%; /* Width of popup */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        /* Close button for popup */
+        .close {
+            color: #aaa; /* Text color */
+            float: right; /* Aligns to the right */
+            font-size: 28px; /* Font size */
+            font-weight: bold; /* Bold text */
+            cursor: pointer; /* Changes cursor on hover */
+        }
+
+        /* Hover effect for close button */
+        .close:hover,
+        .close:focus {
+            color: black; /* Text color on hover/focus */
+            text-decoration: none; /* No underline */
+        }
+
+        /* Canvas for Three.js Animated Background */
+        #c {
+            position: fixed; /* Fixed position to cover the screen */
+            top: 0; /* Top edge of the screen */
+            left: 0; /* Left edge of the screen */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            z-index: -1; /* Stays behind other elements */
+            background-color: #e0f7e9; /* Base color for the green animated background */
+        }
+
+        /* Canvas for additional 3D objects (hidden unless used) */
+        #carton {
+            display: none; /* Hidden unless used */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a class="nav__title" href="https://exacticsbiotech.com/">
+            <img src="img/logo.svg" alt="Exactics logo"> <!-- Logo image -->
+        </a>
+        <div class="nav__buttons">
+            <a class="nav__button" href="mailto:business@exacticsbiotech.com">Contact</a> <!-- Contact button -->
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- About Us Section -->
+        <section class="section section--about">
+            <div class="section__container">
+                <h1 class="h1">About Us</h1> <!-- Section header -->
+                <p>
+                    In 2018, Julian Kage, CEO and Founder of Exactics, invented and patented QuickLyme, the first 15-minute rapid test for Lyme disease. He secured a second patent for a versatile core test design adaptable to over 200 arthropod-borne diseases, including Malaria, Zika, and Dengue Fever. This novel design enables easy antibody swaps, allowing for customizable tests across various diseases while minimizing manufacturing costs.
+                </p> <!-- Description paragraph -->
+                <b>Join our waitlist</b> <!-- Bolded text encouraging signup -->
+                <form class="waitlist__form" id="waitlist">
+                    <input class="waitlist__input" required type="email" placeholder="jane@exacticsbiotech.com"> <!-- Email input field -->
+                    <button type="submit" class="button">Join</button> <!-- Submit button -->
+                </form>
+                <p><small>By clicking 'Join', you agree to our <a href="#" id="openPrivacyPopup">Privacy Policy.</a></small></p> <!-- Privacy policy link -->
+
+                <!-- The Popup -->
+                <div id="privacyPopup" class="popup">
                     <div class="popup-content">
-                        <span class="close">&times;</span>
-                        <h2>Privacy Policy</h2>
-                        <p>Privacy Policy
-
-                            <br>We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we collect, use, and store your personal information when you join our waitlist.
-                            <br>
-                            <br>What Data We Collect
-                            <br>When you join our waitlist, we collect your email address.
-                            <br>
-                            <br>How We Use Your Data
-                            <br>We use your email address to communicate with you about our services and updates. We do not share your email address with any third parties without your explicit consent.
-                            <br>
-                            <br>Data Security
-                            <br>We implement appropriate technical and organizational measures to protect your personal data from unauthorized access, use, or disclosure. Your data is stored securely and access is limited to authorized personnel only.
-                            <br>
-                            <br>Your Rights
-                            <br>You have the right to request access to your personal data, request correction or deletion of your data, and withdraw your consent at any time. To exercise these rights, please contact us at privacy@exacticsbiotech.com.
-                            <br>
-                            <br>By providing your email address and joining our waitlist, you consent to the terms outlined in this privacy policy.
-                            <br>
-                            <br>Contact Us
-                            <br>If you have any questions about our privacy practices, please contact us at<a class="nav__button" href="mailto:privacy@exacticsbiotech.com">
-                            privacy@exacticsbiotech.com.
-                            </a>
-                            </p>
+                        <span class="close">&times;</span> <!-- Close button -->
+                        <h2>Privacy Policy</h2> <!-- Popup header -->
+                        <div name="termly-embed" data-id="caa3a2f8-64b1-4dbc-9e9c-8aef65c06da5"></div> <!-- Placeholder for embedded content -->
+                        <script type="text/javascript">
+                            (function(d, s, id) {
+                                var js, tjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id)) return;
+                                js = d.createElement(s); js.id = id;
+                                js.src = "https://app.termly.io/embed-policy.min.js";
+                                tjs.parentNode.insertBefore(js, tjs);
+                            }(document, 'script', 'termly-jssdk')); <!-- Script to dynamically load content -->
+                        </script>
                     </div>
-                    </div>
-
-                    <script>
-                    // Get the popup
-                    var popup = document.getElementById("privacyPopup");
-
-                    // Get the button that opens the popup
-                    var btn = document.getElementById("openPrivacyPopup");
-
-                    // Get the <span> element that closes the popup
-                    var span = document.getElementsByClassName("close")[0];
-
-                    // When the user clicks on the button, open the popup
-                    btn.onclick = function(event) {
-                        event.preventDefault(); // Prevent default anchor behavior
-                        popup.style.display = "block";
-                    }
-
-                    // When the user clicks on <span> (x), close the popup
-                    span.onclick = function() {
-                        popup.style.display = "none";
-                    }
-
-                    // When the user clicks anywhere outside of the popup, close it
-                    window.onclick = function(event) {
-                        if (event.target == popup) {
-                        popup.style.display = "none";
-                        }
-                    }
-                    </script>
-                    
-                    
-                    
-
-
-                    <!--a class="button" href="https://docs.google.com/forms/u/5/d/e/1FAIpQLSeY_iiFwvN6PSkLN4u1OBQrApbctioCAjvVvxPsybD1_1bUhg/viewform?usp=send_form">
-                        Join Our Waitlist-->
-                    </a-->
-                    
                 </div>
-            </section>
-
-
-            <section class="section section--quicklyme">
-                <div class="section__carton" style="opacity: 0;">
-                    <span>BOX<br/>ART<br/>PLACEHOLDER</span>
-                    <canvas id="carton"></canvas>
-                </div>
-                <div class="section__container">
-                    <h1 class="h1">QuickLyme&reg;</h1>
-
-                    <p>
-                        QuickLyme is a cost-effective, reliable, and rapid 
-                        method for testing for Lyme bacterium (genus Borrelia) 
-                        in ticks on the go &#8212; without the use of a laboratory. 
-                        Lyme disease (Borreliosis), which is a growing issue 
-                        worldwide, is transmitted via ticks and carries dangerous 
-                        and potentially deadly side effects including rashes, 
-                        permanent joint damage, swelling, fever, and flu-like 
-                        symptoms. With our proprietary technology, users are able 
-                        to quickly determine if they are at risk of contracting 
-                        Lyme disease, and whether they need to seek further 
-                        medical attention.
-
-
-                    </p>
-
-                   
-
-                    <!--
-                    <a class="button" href="#">
-                        Learn more
-                    </a>
-                    -->
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class="footer__left">
-                &copy; 2024 Exactics LLC. All rights reserved.
             </div>
-            <div class="footer__right">
-                <div class="footer__address">
-                    Exactics LLC<br/>
-                    361 Main St<br/>
-                    Manchester, CT<br/>
-                    06040
+        </section>
+
+        <!-- QuickLyme Section -->
+        <section class="section section--quicklyme">
+            <div class="section__container">
+                <h1 class="h1">QuickLyme&reg;</h1> <!-- Section header -->
+                <p>
+                    Julian Kage, CEO of Exactics, developed QuickLyme, a rapid test that detects Lyme bacteria in ticks within 15 minutes and secured a patent with support from the Ford Foundation. Julian leads Exactics alongside Zach Sarmoen (CFO), Dylan Murray (COO), Sean Greeby (CSO), and Max Almeida (CTO). Our advisory board includes experts from Harvard Medical School, the University of Chicago, Lagos State University, and the University of Ibadan.
+                </p> <!-- Description paragraph -->
+                <!-- YouTube Video Embed -->
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-ClR1yWZf1s?si=JMawsX-WjT7kEnOj" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-            
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer__left">
+            &copy; 2024 Exactics LLC. All rights reserved. <!-- Copyright notice -->
+        </div>
+        <div class="footer__right">
+            <div class="footer__address">
+                Exactics LLC<br/>
+                361 Main St<br/>
+                Manchester, CT<br/>
+                06040 <!-- Company address -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Canvas for Three.js Animated Background -->
+    <canvas id="c"></canvas> <!-- Main canvas for the 3D background -->
+    <canvas id="carton"></canvas> <!-- Secondary canvas, currently hidden -->
+
+    <!-- Include Three.js Library -->
+    <script type="module" src="./lib/three.module.js"></script> <!-- Importing Three.js library -->
+
+    <!-- JavaScript for the Three.js Scene -->
+    <script type="module">
+        // Import the Three.js module
+        import * as THREE from './lib/three.module.js';
+
+        // Constants for the number of balls and modifiers for mouse to interface movement
+        const BALL_COUNT = 30; // Number of balls to be created in the scene
+        const SHINY_COUNT = 7; // Number of shiny balls to be created in the scene
+        const CAMERA_MOVE_MODIFIER = 0; // Modifier for camera movement speed
+        const CARTON_MOVE_MODIFIER = 0.1; // Modifier for carton movement speed
+
+        // CanvasDriver class, responsible for managing the main 3D scene
+        class CanvasDriver {
+            constructor() {
+                // Initializing CartonDriver for a secondary 3D object
+                this.carton = new CartonDriver();
+                // Mouse setup with initial centered values
+                this.mouse = {x: 0.5, y: 0.5};
                 
-            </div>
-        </footer>
+                // Window dimensions for calculating half-width and half-height
+                this.windowHalfX = window.innerWidth / 2;
+                this.windowHalfY = window.innerHeight / 2;
 
-        <canvas id="c"></canvas>
+                // Selecting the canvas element for rendering
+                this.canvas = document.querySelector('canvas#c');
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="index.mjs" type="module"></script>
-    
-        
-    
-    
-    </body>
+                // Setting up the perspective camera
+                this.camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 10000);
+                this.camera.position.z = 1800; // Positioning the camera in the scene
+
+                // Creating a new scene and object group for balls
+                this.scene = new THREE.Scene();
+                this.balls = new THREE.Object3D();
+                // Setting the background color of the scene
+                this.scene.background = new THREE.Color(0x728C69);
+
+                // Adding a directional light to the scene
+                const light = new THREE.DirectionalLight(0xffffff);
+                light.position.set(0, 0, 1);
+                this.scene.add(light);
+
+                // Defining geometry and materials for the balls
+                const radius = 20; // Radius for each ball
+                const geometry1 = new THREE.IcosahedronGeometry(radius, 1); // Geometry for balls
+
+                const material = new THREE.MeshPhongMaterial({
+                    color: 0x597d35, // Ball color
+                    flatShading: true, // Flat shading for style
+                    vertexColors: true, // Vertex colors
+                    shininess: 2 // Shininess level
+                });
+
+                const wireframeMaterial = new THREE.MeshBasicMaterial({color: 0x000000, wireframe: true, transparent: true});
+
+                this.meshes = []; // Array to hold all ball meshes
+
+                // Creating ball meshes with wireframe material
+                for (let i = 0; i < BALL_COUNT; i++) {
+                    this.meshes.push({
+                        mesh: new THREE.Mesh(geometry1, wireframeMaterial),
+                        heading: this.make_new_heading(),
+                        rotation: this.make_new_heading().multiplyScalar(1 / 300)
+                    });
+                }
+
+                // Creating shiny ball meshes with solid material
+                for (let i = 0; i < SHINY_COUNT; i++) {
+                    this.meshes.push({
+                        mesh: new THREE.Mesh(geometry1, material),
+                        heading: this.make_new_heading(),
+                        rotation: this.make_new_heading().multiplyScalar(1 / 200)
+                    });
+                }
+
+                // Resetting position and other properties of each mesh
+                for (let i = 0; i < this.meshes.length; i++) {
+                    this.reset_mesh(i);
+                }
+
+                // BIG BOY (unused)
+                this.bgmesh = {
+                    mesh: new THREE.Mesh(
+                        new THREE.IcosahedronGeometry(1900, 1),
+                        wireframeMaterial
+                    ),
+                    rotation: new THREE.Vector3(0.0001, 0, 0.0001),
+                    heading: new THREE.Vector3(0, 0, 0)
+                };
+
+                // Adding all meshes to the balls group
+                for (let i in this.meshes) {
+                    this.balls.add(this.meshes[i].mesh);
+                }
+                // Adding the balls group to the scene
+                this.scene.add(this.balls);
+
+                // Setting up the renderer
+                this.renderer = new THREE.WebGLRenderer({
+                    antialias: true,
+                    canvas: this.canvas
+                });
+                this.renderer.setPixelRatio(window.devicePixelRatio); // Sets pixel ratio for better resolution
+                this.renderer.setSize(window.innerWidth, window.innerHeight); // Sets the renderer size to the window dimensions
+            }
+
+            // Method to render the scene
+            render() {
+                this.renderer.render(this.scene, this.camera); // Renders the scene using the camera
+            }
+
+            // Animation loop for continuous rendering
+            animate() {
+                requestAnimationFrame(this.animate.bind(this)); // Recursively calls animate for continuous rendering
+                this.carton.animate(); // Animates the carton object
+
+                // Calculating target rotation based on mouse position
+                const targetRotation = new THREE.Vector3(
+                    this.mouse.x * CAMERA_MOVE_MODIFIER,
+                    this.mouse.y * CAMERA_MOVE_MODIFIER,
+                    0
+                );
+                const currentRotation = new THREE.Vector3(
+                    this.balls.rotation.x,
+                    this.balls.rotation.y,
+                    this.balls.rotation.z
+                );
+
+                // Smoothly interpolates between current and target rotations
+                currentRotation.lerp(targetRotation, 0.5);
+
+                // Updating balls rotation
+                this.balls.rotation.x = currentRotation.x;
+                this.balls.rotation.y = currentRotation.y;
+                this.balls.rotation.z = currentRotation.z;
+
+                // Updating position and rotation of each mesh
+                for (let i = 0; i < this.meshes.length; i++) {
+                    this.meshes[i].mesh.position.add(this.meshes[i].heading);
+                    this.meshes[i].mesh.rotation.x += this.meshes[i].rotation.x;
+                    this.meshes[i].mesh.rotation.y += this.meshes[i].rotation.y;
+                    this.meshes[i].mesh.rotation.z += this.meshes[i].rotation.z;
+
+                    // Resetting the mesh if it reaches its target
+                    if (this.meshes[i].mesh.position.distanceTo(this.meshes[i].target) < 100) {
+                        this.reset_mesh(i);
+                    }
+                }
+
+                this.render(); // Render the updated scene
+            }
+
+            // Method to handle window resize
+            on_window_resize() {
+                this.windowHalfX = window.innerWidth / 2;
+                this.windowHalfY = window.innerHeight / 2;
+
+                this.camera.aspect = window.innerWidth / window.innerHeight; // Updates camera aspect ratio
+                this.camera.updateProjectionMatrix(); // Updates the projection matrix
+
+                this.renderer.setSize(window.innerWidth, window.innerHeight); // Adjusts renderer size
+
+                this.carton.on_window_resize(); // Calls resize handler for carton
+            }
+
+            // Method to reset the position and heading of a mesh
+            reset_mesh(index) {
+                const obj = this.meshes[index];
+
+                // place somewhere on the screen
+                obj.mesh.position.x = -400 - (Math.random() * 2400);
+                obj.mesh.position.y = -100 - (Math.random() * 700);
+                obj.mesh.position.z = -400 - (Math.random() * 2400);
+
+                // generate a random target
+                const target = new THREE.Vector3(
+                    600 + (Math.random() * 200),
+                    200 + (Math.random() * 50),
+                    600 + (Math.random() * 200)
+                );
+
+                obj.target = target.clone();
+                // create a heading
+                const heading = target.sub(obj.mesh.position).normalize().multiplyScalar(0.5);
+
+                obj.heading = heading;
+
+                obj.lifetime = 0;
+                obj.mesh.material.opacity = 1; // Reset mesh opacity
+            }
+
+            // Method to generate a new random heading
+            make_new_heading() {
+                return new THREE.Vector3(
+                    Math.random(),
+                    Math.random(),
+                    Math.random()
+                );
+            }
+
+            // Method to handle mouse movement
+            on_mouse_move(e) {
+                this.mouse.x = (e.clientX / window.innerWidth); // Normalizes mouse X position
+                this.mouse.y = (e.clientY / window.innerHeight); // Normalizes mouse Y position
+                this.carton.set_mouse(this.mouse); // Updates mouse position in carton
+            }
+        }
+
+        // CartonDriver class manages a 3D carton object
+        class CartonDriver {
+            constructor() {
+                // Selecting the canvas for the carton
+                this.canvas = document.querySelector('canvas#carton');
+                const rect = this.canvas.getBoundingClientRect();
+                // box art
+                const carton_geometry = new THREE.BoxGeometry(13, 20, 7); // Box geometry for carton
+                const basic_material = new THREE.MeshPhongMaterial({color: 0xbacdb0, roughness: 0.5});
+                
+                this.carton = new THREE.Mesh(carton_geometry, basic_material); // Creates the carton mesh
+                this.carton.position.z = 0; // Sets initial position
+                this.carton.position.x = 0;
+
+                this.scene = new THREE.Scene(); // Creates a new scene
+                this.scene.add(this.carton); // Adds the carton to the scene
+
+                const light = new THREE.DirectionalLight(0xffffff); // Adds directional light
+                light.position.set(0, 0, 1);
+                this.scene.add(light);
+
+                this.camera = new THREE.PerspectiveCamera(20, rect.width / rect.height, 1, 10000); // Sets up the camera
+                this.camera.position.z = 100;
+
+                this.mouse = {x: 0, y: 0}; // Initializes mouse coordinates
+
+                // renderer
+                this.renderer = new THREE.WebGLRenderer({
+                    antialias: true,
+                    alpha: true,
+                    canvas: this.canvas
+                });
+                this.renderer.setClearColor(0x000000, 0); // the default background color
+                this.scene.background = null; // Ensures no background color
+                this.renderer.setPixelRatio(window.devicePixelRatio); // Sets renderer pixel ratio
+                this.renderer.setSize(rect.width, rect.height); // Sets renderer size to match canvas
+            }
+
+            set_mouse(mouse) {
+                this.mouse = mouse; // Updates mouse coordinates
+            }
+
+            on_window_resize() {
+                this.camera.aspect = window.innerWidth / window.innerHeight; // Adjusts aspect ratio
+                this.camera.updateProjectionMatrix(); // Updates camera projection matrix
+
+                const rect = this.canvas.getBoundingClientRect(); // Gets new canvas size
+                this.renderer.setSize(rect.width, rect.height); // Adjusts renderer size
+            }
+
+            render() {
+                this.renderer.render(this.scene, this.camera); // Renders the carton scene
+            }
+
+            animate() {
+                this.carton.rotation.x = this.mouse.y * CARTON_MOVE_MODIFIER; // Rotates carton based on mouse Y
+                this.carton.rotation.y = this.mouse.x * CARTON_MOVE_MODIFIER; // Rotates carton based on mouse X
+                this.render(); // Calls render method
+            }
+        }
+
+        // Waitlist Signup Handler
+        class WaitlistSignup {
+            constructor(form_selector) {
+                this.form = document.querySelector(form_selector); // Selects form element
+
+                this.form.addEventListener(
+                    'submit',
+                    this.handleForm.bind(this) // Binds form handler to this context
+                );
+            }
+
+            async handleForm(e) {
+                e.preventDefault(); // Prevents default form submission
+
+                this.form.classList.add('waitlist__form--loading'); // Adds loading class
+
+                const email_inp = this.form.querySelector('input[type="email"]'); // Selects email input field
+
+                let r = await fetch('https://link.exactics.science/api/signup', { // Sends POST request
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' // Sets content type to JSON
+                    },
+                    body: JSON.stringify({
+                        email: email_inp.value // Sends email value
+                    })
+                });
+
+                r = await r.json(); // Parses JSON response
+
+                if (r.ok) { // Checks if response is OK
+                    Swal.fire({
+                        title: 'You\'re on the list!', // Alert title
+                        text: 'We\'ll be in touch when we\'re ready to launch.', // Alert text
+                        icon: 'success' // Alert icon
+                    });
+
+                    this.form.classList.remove('waitlist__form--loading'); // Removes loading class
+                    email_inp.value = ''; // Clears email input
+                }
+            }
+        }
+
+        // Initialize the scene and waitlist form on window load
+        window.onload = () => {
+            window.cd = new CanvasDriver(); // Initializes CanvasDriver
+            window.cd.animate(); // Starts animation loop
+
+            window.onresize = () => cd.on_window_resize(); // Handles window resize
+            window.addEventListener('mousemove', e => cd.on_mouse_move(e)); // Updates mouse movement
+
+            window.waitlist_handler = new WaitlistSignup('#waitlist'); // Initializes waitlist signup handler
+        };
+    </script>
+
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert library for alerts -->
+</body>
 </html>
