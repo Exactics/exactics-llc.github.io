@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Specifies the character encoding for the HTML document -->
     <meta charset="UTF-8">
+    
+    <!-- Sets the viewport to ensure proper scaling on different devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title of the webpage displayed in the browser tab -->
     <title>Exactics</title>
     
-    <!-- Stylesheets and Fonts -->
+    <!-- Link to the external CSS file for styles -->
     <link href="index.css" rel="stylesheet">
+    
+    <!-- Preconnect to Google Fonts to improve loading performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Import Google Fonts (Inter font family) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     
-    <!-- Favicon and Icons -->
+    <!-- Favicon and Apple Touch Icon for website branding on browser tabs and mobile devices -->
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
 
-    <!-- SEO Meta Tags -->
+    <!-- SEO Meta Tags for search engines and social media sharing -->
     <meta name="description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
     <meta property="og:url" content="https://exacticsbiotech.com">
     <meta property="og:type" content="website">
@@ -29,193 +38,215 @@
     
     <!-- Inline Styles for Page Layout and Design -->
     <style>
-        /* General Reset and Styling */
+        /* General styles for the body, applying font, margin, and background settings */
         body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f4f4f4;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif; /* Sets font family to Inter */
+            margin: 0; /* Removes default margin */
+            padding: 0; /* Removes default padding */
+            display: flex; /* Uses flexbox for layout */
+            flex-direction: column; /* Stacks elements vertically */
+            align-items: center; /* Centers items horizontally */
+            background-color: #f4f4f4; /* Sets background color */
+            overflow-x: hidden; /* Prevents horizontal overflow */
         }
 
+        /* Styles for the navigation bar */
         nav {
-            width: 100%;
-            padding: 20px;
-            background-color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 10;
+            width: 100%; /* Full width */
+            padding: 20px; /* Padding around content */
+            background-color: #fff; /* White background */
+            display: flex; /* Flexbox layout */
+            justify-content: space-between; /* Space between logo and buttons */
+            align-items: center; /* Centers items vertically */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+            position: relative; /* Positioned relative to parent */
+            z-index: 10; /* Ensures it stays on top of the canvas */
         }
 
+        /* Style for the logo inside the navigation bar */
         nav .nav__title img {
-            height: 40px;
+            height: 40px; /* Sets logo height */
         }
 
+        /* Style for navigation buttons */
         nav .nav__buttons a {
-            text-decoration: none;
-            color: #333;
-            padding: 10px 20px;
-            border: 1px solid #333;
-            border-radius: 4px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            text-decoration: none; /* Removes underline */
+            color: #333; /* Text color */
+            padding: 10px 20px; /* Padding around text */
+            border: 1px solid #333; /* Border around button */
+            border-radius: 4px; /* Rounds corners */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition on hover */
         }
 
+        /* Hover effect for navigation buttons */
         nav .nav__buttons a:hover {
-            background-color: #333;
-            color: #fff;
+            background-color: #333; /* Background color on hover */
+            color: #fff; /* Text color on hover */
         }
 
+        /* Main container styles */
         main {
-            width: 100%;
-            max-width: 1200px;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            z-index: 10;
+            width: 100%; /* Full width */
+            max-width: 1200px; /* Maximum width for large screens */
+            padding: 40px 20px; /* Padding around content */
+            display: flex; /* Flexbox layout */
+            flex-direction: column; /* Stacks sections vertically */
+            align-items: center; /* Centers items horizontally */
+            position: relative; /* Positioned relative to parent */
+            z-index: 10; /* Ensures it stays on top of the canvas */
         }
 
+        /* Style for each section of content */
         .section {
-            width: 100%;
-            margin-bottom: 40px;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            position: relative;
-            z-index: 5;
+            width: 100%; /* Full width */
+            margin-bottom: 40px; /* Space below each section */
+            padding: 20px; /* Padding inside section */
+            background-color: #fff; /* White background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border-radius: 8px; /* Rounded corners */
+            position: relative; /* Positioned relative to parent */
+            z-index: 5; /* Stays above background */
         }
 
+        /* Container within each section for content alignment */
         .section__container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex; /* Flexbox layout */
+            flex-direction: column; /* Stacks items vertically */
+            align-items: center; /* Centers items horizontally */
+            text-align: center; /* Centers text */
+            max-width: 800px; /* Maximum width for large screens */
+            margin: 0 auto; /* Centers container within section */
         }
 
+        /* Style for headers */
         .h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #333;
+            font-size: 2rem; /* Font size */
+            margin-bottom: 20px; /* Space below header */
+            color: #333; /* Text color */
         }
 
+        /* Style for paragraphs */
         p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 20px;
+            font-size: 1rem; /* Font size */
+            line-height: 1.6; /* Line spacing */
+            color: #666; /* Text color */
+            margin-bottom: 20px; /* Space below paragraph */
         }
 
+        /* Styles for the waitlist form */
         .waitlist__form {
-            display: flex;
-            margin-bottom: 10px;
+            display: flex; /* Flexbox layout */
+            margin-bottom: 10px; /* Space below form */
         }
 
+        /* Input field style in the waitlist form */
         .waitlist__input {
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px;
-            flex: 1;
+            padding: 10px; /* Padding inside input */
+            font-size: 1rem; /* Font size */
+            border: 1px solid #ddd; /* Border around input */
+            border-radius: 4px 0 0 4px; /* Rounded left corners */
+            flex: 1; /* Takes up remaining space */
         }
 
+        /* Style for buttons */
         .button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            border: none;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 0 4px 4px 0;
-            transition: background-color 0.3s ease;
+            padding: 10px 20px; /* Padding around text */
+            font-size: 1rem; /* Font size */
+            border: none; /* Removes border */
+            background-color: #007bff; /* Background color */
+            color: #fff; /* Text color */
+            cursor: pointer; /* Changes cursor on hover */
+            border-radius: 0 4px 4px 0; /* Rounded right corners */
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
         }
 
+        /* Hover effect for buttons */
         .button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Background color on hover */
         }
 
+        /* Style for video container */
         .video-container {
-            margin-top: 20px;
+            margin-top: 20px; /* Space above video */
         }
 
+        /* Style for iframe (YouTube video) */
         iframe {
-            border: none;
-            border-radius: 8px;
+            border: none; /* Removes border */
+            border-radius: 8px; /* Rounded corners */
         }
 
+        /* Footer styles */
         footer {
-            width: 100%;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
+            width: 100%; /* Full width */
+            padding: 20px; /* Padding around content */
+            background-color: #333; /* Background color */
+            color: #fff; /* Text color */
+            text-align: center; /* Centers text */
         }
 
+        /* Footer left and right container styles */
         .footer__left,
         .footer__right {
-            margin-bottom: 10px;
+            margin-bottom: 10px; /* Space below each container */
         }
 
+        /* Style for address in footer */
         .footer__address {
-            line-height: 1.6;
+            line-height: 1.6; /* Line spacing */
         }
 
-        /* Popup container */
+        /* Popup container for Privacy Policy */
         .popup {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            z-index: 100; /* High z-index to stay on top */
+            left: 0; /* Left edge of the screen */
+            top: 0; /* Top edge of the screen */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enables scrolling if needed */
+            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
         }
 
+        /* Content within the popup */
         .popup-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            border-radius: 8px;
+            background-color: #fefefe; /* White background */
+            margin: 15% auto; /* Centers vertically and horizontally */
+            padding: 20px; /* Padding inside content */
+            border: 1px solid #888; /* Border around content */
+            width: 80%; /* Width of popup */
+            border-radius: 8px; /* Rounded corners */
         }
 
+        /* Close button for popup */
         .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
+            color: #aaa; /* Text color */
+            float: right; /* Aligns to the right */
+            font-size: 28px; /* Font size */
+            font-weight: bold; /* Bold text */
+            cursor: pointer; /* Changes cursor on hover */
         }
 
+        /* Hover effect for close button */
         .close:hover,
         .close:focus {
-            color: black;
-            text-decoration: none;
+            color: black; /* Text color on hover/focus */
+            text-decoration: none; /* No underline */
         }
 
         /* Canvas for Three.js Animated Background */
         #c {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            position: fixed; /* Fixed position to cover the screen */
+            top: 0; /* Top edge of the screen */
+            left: 0; /* Left edge of the screen */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            z-index: -1; /* Stays behind other elements */
             background-color: #e0f7e9; /* Base color for the green animated background */
         }
 
+        /* Canvas for additional 3D objects (hidden unless used) */
         #carton {
             display: none; /* Hidden unless used */
         }
@@ -225,10 +256,10 @@
     <!-- Navigation Bar -->
     <nav>
         <a class="nav__title" href="https://exacticsbiotech.com/">
-            <img src="img/logo.svg" alt="Exactics logo">
+            <img src="img/logo.svg" alt="Exactics logo"> <!-- Logo image -->
         </a>
         <div class="nav__buttons">
-            <a class="nav__button" href="mailto:business@exacticsbiotech.com">Contact</a>
+            <a class="nav__button" href="mailto:business@exacticsbiotech.com">Contact</a> <!-- Contact button -->
         </div>
     </nav>
 
@@ -237,23 +268,23 @@
         <!-- About Us Section -->
         <section class="section section--about">
             <div class="section__container">
-                <h1 class="h1">About Us</h1>
+                <h1 class="h1">About Us</h1> <!-- Section header -->
                 <p>
                     In 2018, Julian Kage, CEO and Founder of Exactics, invented and patented QuickLyme, the first 15-minute rapid test for Lyme disease. He secured a second patent for a versatile core test design adaptable to over 200 arthropod-borne diseases, including Malaria, Zika, and Dengue Fever. This novel design enables easy antibody swaps, allowing for customizable tests across various diseases while minimizing manufacturing costs.
-                </p>
-                <b>Join our waitlist</b>
+                </p> <!-- Description paragraph -->
+                <b>Join our waitlist</b> <!-- Bolded text encouraging signup -->
                 <form class="waitlist__form" id="waitlist">
-                    <input class="waitlist__input" required type="email" placeholder="jane@exacticsbiotech.com">
-                    <button type="submit" class="button">Join</button>
+                    <input class="waitlist__input" required type="email" placeholder="jane@exacticsbiotech.com"> <!-- Email input field -->
+                    <button type="submit" class="button">Join</button> <!-- Submit button -->
                 </form>
-                <p><small>By clicking 'Join', you agree to our <a href="#" id="openPrivacyPopup">Privacy Policy.</a></small></p>
+                <p><small>By clicking 'Join', you agree to our <a href="#" id="openPrivacyPopup">Privacy Policy.</a></small></p> <!-- Privacy policy link -->
 
                 <!-- The Popup -->
                 <div id="privacyPopup" class="popup">
                     <div class="popup-content">
-                        <span class="close">&times;</span>
-                        <h2>Privacy Policy</h2>
-                        <div name="termly-embed" data-id="caa3a2f8-64b1-4dbc-9e9c-8aef65c06da5"></div>
+                        <span class="close">&times;</span> <!-- Close button -->
+                        <h2>Privacy Policy</h2> <!-- Popup header -->
+                        <div name="termly-embed" data-id="caa3a2f8-64b1-4dbc-9e9c-8aef65c06da5"></div> <!-- Placeholder for embedded content -->
                         <script type="text/javascript">
                             (function(d, s, id) {
                                 var js, tjs = d.getElementsByTagName(s)[0];
@@ -261,7 +292,7 @@
                                 js = d.createElement(s); js.id = id;
                                 js.src = "https://app.termly.io/embed-policy.min.js";
                                 tjs.parentNode.insertBefore(js, tjs);
-                            }(document, 'script', 'termly-jssdk'));
+                            }(document, 'script', 'termly-jssdk')); <!-- Script to dynamically load content -->
                         </script>
                     </div>
                 </div>
@@ -271,10 +302,10 @@
         <!-- QuickLyme Section -->
         <section class="section section--quicklyme">
             <div class="section__container">
-                <h1 class="h1">QuickLyme&reg;</h1>
+                <h1 class="h1">QuickLyme&reg;</h1> <!-- Section header -->
                 <p>
                     Julian Kage, CEO of Exactics, developed QuickLyme, a rapid test that detects Lyme bacteria in ticks within 15 minutes and secured a patent with support from the Ford Foundation. Julian leads Exactics alongside Zach Sarmoen (CFO), Dylan Murray (COO), Sean Greeby (CSO), and Max Almeida (CTO). Our advisory board includes experts from Harvard Medical School, the University of Chicago, Lagos State University, and the University of Ibadan.
-                </p>
+                </p> <!-- Description paragraph -->
                 <!-- YouTube Video Embed -->
                 <div class="video-container">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/-ClR1yWZf1s?si=JMawsX-WjT7kEnOj" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -286,27 +317,28 @@
     <!-- Footer -->
     <footer>
         <div class="footer__left">
-            &copy; 2024 Exactics LLC. All rights reserved.
+            &copy; 2024 Exactics LLC. All rights reserved. <!-- Copyright notice -->
         </div>
         <div class="footer__right">
             <div class="footer__address">
                 Exactics LLC<br/>
                 361 Main St<br/>
                 Manchester, CT<br/>
-                06040
+                06040 <!-- Company address -->
             </div>
         </div>
     </footer>
 
     <!-- Canvas for Three.js Animated Background -->
-    <canvas id="c"></canvas>
-    <canvas id="carton"></canvas>
+    <canvas id="c"></canvas> <!-- Main canvas for the 3D background -->
+    <canvas id="carton"></canvas> <!-- Secondary canvas, currently hidden -->
 
     <!-- Include Three.js Library -->
-    <script type="module" src="./lib/three.module.js"></script>
+    <script type="module" src="./lib/three.module.js"></script> <!-- Importing Three.js library -->
 
-    <!-- Your JavaScript for the Three.js Scene -->
+    <!-- JavaScript for the Three.js Scene -->
     <script type="module">
+        // Import the Three.js module
         import * as THREE from './lib/three.module.js';
 
         // Constants for the number of balls and modifiers for mouse to interface movement
@@ -346,14 +378,14 @@
                 this.scene.add(light);
 
                 // Defining geometry and materials for the balls
-                const radius = 20;
-                const geometry1 = new THREE.IcosahedronGeometry(radius, 1);
+                const radius = 20; // Radius for each ball
+                const geometry1 = new THREE.IcosahedronGeometry(radius, 1); // Geometry for balls
 
                 const material = new THREE.MeshPhongMaterial({
-                    color: 0x597d35,
-                    flatShading: true,
-                    vertexColors: true,
-                    shininess: 2
+                    color: 0x597d35, // Ball color
+                    flatShading: true, // Flat shading for style
+                    vertexColors: true, // Vertex colors
+                    shininess: 2 // Shininess level
                 });
 
                 const wireframeMaterial = new THREE.MeshBasicMaterial({color: 0x000000, wireframe: true, transparent: true});
@@ -405,18 +437,18 @@
                     antialias: true,
                     canvas: this.canvas
                 });
-                this.renderer.setPixelRatio(window.devicePixelRatio);
-                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.setPixelRatio(window.devicePixelRatio); // Sets pixel ratio for better resolution
+                this.renderer.setSize(window.innerWidth, window.innerHeight); // Sets the renderer size to the window dimensions
             }
 
             // Method to render the scene
             render() {
-                this.renderer.render(this.scene, this.camera);
+                this.renderer.render(this.scene, this.camera); // Renders the scene using the camera
             }
 
             // Animation loop for continuous rendering
             animate() {
-                requestAnimationFrame(this.animate.bind(this)); // Recursively calls animate
+                requestAnimationFrame(this.animate.bind(this)); // Recursively calls animate for continuous rendering
                 this.carton.animate(); // Animates the carton object
 
                 // Calculating target rotation based on mouse position
@@ -452,7 +484,7 @@
                     }
                 }
 
-                this.render(); //Render scene
+                this.render(); // Render the updated scene
             }
 
             // Method to handle window resize
@@ -460,12 +492,12 @@
                 this.windowHalfX = window.innerWidth / 2;
                 this.windowHalfY = window.innerHeight / 2;
 
-                this.camera.aspect = window.innerWidth / window.innerHeight;
-                this.camera.updateProjectionMatrix();
+                this.camera.aspect = window.innerWidth / window.innerHeight; // Updates camera aspect ratio
+                this.camera.updateProjectionMatrix(); // Updates the projection matrix
 
-                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.setSize(window.innerWidth, window.innerHeight); // Adjusts renderer size
 
-                this.carton.on_window_resize();
+                this.carton.on_window_resize(); // Calls resize handler for carton
             }
 
             // Method to reset the position and heading of a mesh
@@ -491,7 +523,7 @@
                 obj.heading = heading;
 
                 obj.lifetime = 0;
-                obj.mesh.material.opacity = 1;
+                obj.mesh.material.opacity = 1; // Reset mesh opacity
             }
 
             // Method to generate a new random heading
@@ -505,9 +537,9 @@
 
             // Method to handle mouse movement
             on_mouse_move(e) {
-                this.mouse.x = (e.clientX / window.innerWidth);
-                this.mouse.y = (e.clientY / window.innerHeight);
-                this.carton.set_mouse(this.mouse);
+                this.mouse.x = (e.clientX / window.innerWidth); // Normalizes mouse X position
+                this.mouse.y = (e.clientY / window.innerHeight); // Normalizes mouse Y position
+                this.carton.set_mouse(this.mouse); // Updates mouse position in carton
             }
         }
 
@@ -518,24 +550,24 @@
                 this.canvas = document.querySelector('canvas#carton');
                 const rect = this.canvas.getBoundingClientRect();
                 // box art
-                const carton_geometry = new THREE.BoxGeometry(13, 20, 7);
+                const carton_geometry = new THREE.BoxGeometry(13, 20, 7); // Box geometry for carton
                 const basic_material = new THREE.MeshPhongMaterial({color: 0xbacdb0, roughness: 0.5});
                 
-                this.carton = new THREE.Mesh(carton_geometry, basic_material);
-                this.carton.position.z = 0;
+                this.carton = new THREE.Mesh(carton_geometry, basic_material); // Creates the carton mesh
+                this.carton.position.z = 0; // Sets initial position
                 this.carton.position.x = 0;
 
-                this.scene = new THREE.Scene();
-                this.scene.add(this.carton);
+                this.scene = new THREE.Scene(); // Creates a new scene
+                this.scene.add(this.carton); // Adds the carton to the scene
 
-                const light = new THREE.DirectionalLight(0xffffff);
+                const light = new THREE.DirectionalLight(0xffffff); // Adds directional light
                 light.position.set(0, 0, 1);
                 this.scene.add(light);
 
-                this.camera = new THREE.PerspectiveCamera(20, rect.width / rect.height, 1, 10000);
+                this.camera = new THREE.PerspectiveCamera(20, rect.width / rect.height, 1, 10000); // Sets up the camera
                 this.camera.position.z = 100;
 
-                this.mouse = {x: 0, y: 0};
+                this.mouse = {x: 0, y: 0}; // Initializes mouse coordinates
 
                 // renderer
                 this.renderer = new THREE.WebGLRenderer({
@@ -543,91 +575,91 @@
                     alpha: true,
                     canvas: this.canvas
                 });
-                this.renderer.setClearColor(0x000000, 0); // the default
-                this.scene.background = null;
-                this.renderer.setPixelRatio(window.devicePixelRatio);
-                this.renderer.setSize(rect.width, rect.height);
+                this.renderer.setClearColor(0x000000, 0); // the default background color
+                this.scene.background = null; // Ensures no background color
+                this.renderer.setPixelRatio(window.devicePixelRatio); // Sets renderer pixel ratio
+                this.renderer.setSize(rect.width, rect.height); // Sets renderer size to match canvas
             }
 
             set_mouse(mouse) {
-                this.mouse = mouse;
+                this.mouse = mouse; // Updates mouse coordinates
             }
 
             on_window_resize() {
-                this.camera.aspect = window.innerWidth / window.innerHeight;
-                this.camera.updateProjectionMatrix();
+                this.camera.aspect = window.innerWidth / window.innerHeight; // Adjusts aspect ratio
+                this.camera.updateProjectionMatrix(); // Updates camera projection matrix
 
-                const rect = this.canvas.getBoundingClientRect();
-                this.renderer.setSize(rect.width, rect.height);
+                const rect = this.canvas.getBoundingClientRect(); // Gets new canvas size
+                this.renderer.setSize(rect.width, rect.height); // Adjusts renderer size
             }
 
             render() {
-                this.renderer.render(this.scene, this.camera);
+                this.renderer.render(this.scene, this.camera); // Renders the carton scene
             }
 
             animate() {
-                this.carton.rotation.x = this.mouse.y * CARTON_MOVE_MODIFIER;
-                this.carton.rotation.y = this.mouse.x * CARTON_MOVE_MODIFIER;
-                this.render();
+                this.carton.rotation.x = this.mouse.y * CARTON_MOVE_MODIFIER; // Rotates carton based on mouse Y
+                this.carton.rotation.y = this.mouse.x * CARTON_MOVE_MODIFIER; // Rotates carton based on mouse X
+                this.render(); // Calls render method
             }
         }
 
         // Waitlist Signup Handler
         class WaitlistSignup {
             constructor(form_selector) {
-                this.form = document.querySelector(form_selector);
+                this.form = document.querySelector(form_selector); // Selects form element
 
                 this.form.addEventListener(
                     'submit',
-                    this.handleForm.bind(this)
+                    this.handleForm.bind(this) // Binds form handler to this context
                 );
             }
 
             async handleForm(e) {
-                e.preventDefault();
+                e.preventDefault(); // Prevents default form submission
 
-                this.form.classList.add('waitlist__form--loading');
+                this.form.classList.add('waitlist__form--loading'); // Adds loading class
 
-                const email_inp = this.form.querySelector('input[type="email"]');
+                const email_inp = this.form.querySelector('input[type="email"]'); // Selects email input field
 
-                let r = await fetch('https://link.exactics.science/api/signup', {
+                let r = await fetch('https://link.exactics.science/api/signup', { // Sends POST request
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json' // Sets content type to JSON
                     },
                     body: JSON.stringify({
-                        email: email_inp.value
+                        email: email_inp.value // Sends email value
                     })
                 });
 
-                r = await r.json();
+                r = await r.json(); // Parses JSON response
 
-                if (r.ok) {
+                if (r.ok) { // Checks if response is OK
                     Swal.fire({
-                        title: 'You\'re on the list!',
-                        text: 'We\'ll be in touch when we\'re ready to launch.',
-                        icon: 'success'
+                        title: 'You\'re on the list!', // Alert title
+                        text: 'We\'ll be in touch when we\'re ready to launch.', // Alert text
+                        icon: 'success' // Alert icon
                     });
 
-                    this.form.classList.remove('waitlist__form--loading');
-                    email_inp.value = '';
+                    this.form.classList.remove('waitlist__form--loading'); // Removes loading class
+                    email_inp.value = ''; // Clears email input
                 }
             }
         }
 
         // Initialize the scene and waitlist form on window load
         window.onload = () => {
-            window.cd = new CanvasDriver();
-            window.cd.animate();
+            window.cd = new CanvasDriver(); // Initializes CanvasDriver
+            window.cd.animate(); // Starts animation loop
 
-            window.onresize = () => cd.on_window_resize();
-            window.addEventListener('mousemove', e => cd.on_mouse_move(e));
+            window.onresize = () => cd.on_window_resize(); // Handles window resize
+            window.addEventListener('mousemove', e => cd.on_mouse_move(e)); // Updates mouse movement
 
-            window.waitlist_handler = new WaitlistSignup('#waitlist');
+            window.waitlist_handler = new WaitlistSignup('#waitlist'); // Initializes waitlist signup handler
         };
     </script>
 
     <!-- External Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert library for alerts -->
 </body>
 </html>
