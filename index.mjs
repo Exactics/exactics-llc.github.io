@@ -57,7 +57,7 @@ class CanvasDriver {
             this.meshes.push({
                 mesh: new THREE.Mesh(geometry1, wireframeMaterial),
                 heading: this.make_new_heading(),
-                rotation: this.make_new_heading().multiplyScalar(1/200)
+                rotation: this.make_new_heading().multiplyScalar(1/300)
             })
 
         }
