@@ -53,7 +53,7 @@
         /* Styles for the navigation bar */
         nav {
             width: 100%; /* Full width */
-            padding: 20px; /* Padding around content */
+            padding: 20px 50px; /* Padding around content */
             background-color: #fff; /* White background */
             display: flex; /* Flexbox layout */
             justify-content: space-between; /* Space between logo and buttons */
@@ -116,6 +116,40 @@
             text-align: center; /* Centers text */
             max-width: 800px; /* Maximum width for large screens */
             margin: 0 auto; /* Centers container within section */
+        }
+
+        /* Container for intro */
+        .intro__container{
+            background: transparent; /* Ensure the container has no background */
+            padding: 50px 0; /* Adjust padding to create space around the text */
+            display: flex; /* Flexbox layout */
+            flex-direction: column; /* Stacks items vertically */
+            align-items: center; /* Centers items horizontally */
+            text-align: center; /* Centers text */
+            max-width: 800px; /* Maximum width for large screens */
+            margin: 0 auto; /* Centers container within section */
+            box-shadow: none; /* Ensure no shadow is applied */
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+
+        .section--intro {
+        background: none; /* Ensure no background color is set */
+        text-align: center; /* Center the text */
+        box-shadow: none; /* Remove the shadow */
+        }
+
+        .headline--intro {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        
+        color: #ffffff; /* Set text color to white or any other contrasting color */
+        
+        text-transform: uppercase; /* Make text all caps */
+        margin: 0; /* Remove default margins */
+        padding: 0; /* Remove padding */
         }
 
         /* Style for headers */
@@ -255,20 +289,29 @@
 <body>
     <!-- Navigation Bar -->
     <nav>
-        <a class="nav__title" href="https://exacticsbiotech.com/">
+        <a class="nav__title" href="https://exacticsbiotech.com/" style>
             <img src="img/logo.svg" alt="Exactics logo"> <!-- Logo image -->
         </a>
         <div class="nav__buttons">
-            <a class="nav__button" href="mailto:business@exacticsbiotech.com">Contact</a> <!-- Contact button -->
+            <a class="nav__button" href="mailto:contact@exacticsbiotech.com">Contact</a> <!-- Contact button -->
         </div>
     </nav>
 
     <!-- Main Content Area -->
     <main>
+        <!-- Intro Section -->
+        <section class="section section--intro">
+            <div class="intro__container">
+                <h1 class="headline--intro">Billions suffer from curable diseases that aren't found fast enough</h1>
+                <h1></h1>
+                <h1 class="headline--intro">we're changing that</h1>
+            </div>
+        </section>
         <!-- About Us Section -->
         <section class="section section--about">
             <div class="section__container">
                 <h1 class="h1">About Us</h1> <!-- Section header -->
+
                 <p>
                     In 2018, Julian Kage, CEO and Founder of Exactics, invented and patented QuickLyme, the first 15-minute rapid test for Lyme disease. He secured a second patent for a versatile core test design adaptable to over 200 arthropod-borne diseases, including Malaria, Zika, and Dengue Fever. This novel design enables easy antibody swaps, allowing for customizable tests across various diseases while minimizing manufacturing costs.
                 </p> <!-- Description paragraph -->
@@ -304,15 +347,40 @@
             <div class="section__container">
                 <h1 class="h1">QuickLyme&reg;</h1> <!-- Section header -->
                 <p>
-                    Julian Kage, CEO of Exactics, developed QuickLyme, a rapid test that detects Lyme bacteria in ticks within 15 minutes and secured a patent with support from the Ford Foundation. Julian leads Exactics alongside Zach Sarmoen (CFO), Dylan Murray (COO), Sean Greeby (CSO), and Max Almeida (CTO). Our advisory board includes experts from Harvard Medical School, the University of Chicago, Lagos State University, and the University of Ibadan.
+                    The first over-the-counter rapid test to see if a tick can give a pet or loved-one Lyme disease. 
+                    
+                    <br>Avaliable soon online and in stores.</br>
                 </p> <!-- Description paragraph -->
                 <!-- YouTube Video Embed -->
                 <div class="video-container">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/-ClR1yWZf1s?si=JMawsX-WjT7kEnOj" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
+            <div class="section__container">
+                <h1>The Story</h1>
+                <p> 
+                        In 2017 we realized that there is a growing need for ways to rapidly diagnose Lyme disease - we set out to fix that.
+                        Julian Kage, CEO of Exactics, developed QuickLyme, a rapid test that detects Lyme bacteria in ticks within 15 minutes.
+                        Funded by the Henry Ford Foundation and the National Invention Convention and Entrepreneurship Exposition, we patented our technology.
+                </p>
+            </div>
+                
+                
+            </div>
+        </section>
+
+        <!-- Team Section-->
+        <section class="section section--team">
+            <div class="section__container">
+                <h1>Our Team</h1>
+                <p>
+                    Julian leads Exactics alongside Zach Sarmoen (CFO), Dylan Murray (COO), Sean Greeby (CSO), and Max Almeida (CTO). Our advisory board includes experts from Harvard Medical School, the University of Chicago, Lagos State University, and the University of Ibadan.
+                </p>
             </div>
         </section>
     </main>
+
+    
+
 
     <!-- Footer -->
     <footer>
