@@ -38,6 +38,7 @@
             flex-direction: column;
             align-items: center;
             background-color: #f4f4f4;
+            overflow-x: hidden;
         }
 
         nav {
@@ -48,6 +49,8 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
         }
 
         nav .nav__title img {
@@ -75,6 +78,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            z-index: 10;
         }
 
         .section {
@@ -84,6 +89,8 @@
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            position: relative;
+            z-index: 5;
         }
 
         .section__container {
@@ -166,7 +173,7 @@
         .popup {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 100;
             left: 0;
             top: 0;
             width: 100%;
@@ -206,6 +213,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            background-color: #e0f7e9; /* Set the base color for the green animated background */
         }
     </style>
 </head>
@@ -313,6 +321,72 @@
                 popup.style.display = "none";
             }
         }
+    </script>
+
+    <!-- JavaScript for Animated Background -->
+    <script>
+        const canvas = document.getElementById('c');
+        const ctx = canvas.getContext('2d');
+        const balls = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function Ball(x, y, vx, vy, radius) {
+            this.x = x;
+            this.y = y;
+            this.vx = vx;
+            this.vy = vy;
+            this.radius = radius;
+        }
+
+        Ball.prototype.draw = function() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+            ctx.fillStyle = 'rgba(0, 255, 0, 0.6)';
+            ctx.fill();
+        }
+
+        Ball.prototype.update = function() {
+            this.x += this.vx;
+            this.y += this.vy;
+
+            if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+                this.vx = -this.vx;
+            }
+
+            if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+                this.vy = -this.vy;
+            }
+
+            this.draw();
+        }
+
+        function init() {
+            balls.length = 0;
+            for (let i = 0; i < 50; i++) {
+                let radius = Math.random() * 20 + 5;
+                let x = Math.random() * (canvas.width - radius * 2) + radius;
+                let y = Math.random() * (canvas.height - radius * 2) + radius;
+                let vx = (Math.random() - 0.5) * 2;
+                let vy = (Math.random() - 0.5) * 2;
+                balls.push(new Ball(x, y, vx, vy, radius));
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            balls.forEach(ball => ball.update());
+        }
+
+        init();
+        animate();
     </script>
 </body>
 </html>
