@@ -42,7 +42,7 @@ class CanvasDriver {
         const geometry1 = new THREE.IcosahedronGeometry( radius, 1 );
 
         const material = new THREE.MeshPhongMaterial( {
-            color: 0x4555954,
+            color: 0x597d35,
             flatShading: true,
             vertexColors: true,
             shininess: 2
