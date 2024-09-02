@@ -3,7 +3,7 @@ import * as THREE from './lib/three.module.js'
 // Constants for the number of balls and modifiers for mouse to interface movement
 const BALL_COUNT = 30 // Number of balls to be created in the scene
 const SHINY_COUNT = 7 // Number of shiny balls to be created in the scene
-const CAMERA_MOVE_MODIFIER = 0.1 // Modifier for camera movement speed
+const CAMERA_MOVE_MODIFIER = 0 // Modifier for camera movement speed
 const CARTON_MOVE_MODIFIER = 0.1 // Modifier for carton movement speed
 
 // CanvasDriver class, responsible for managing the main 3D scene
