@@ -2,8 +2,8 @@ import * as THREE from './lib/three.module.js'
 
 const BALL_COUNT = 50
 const SHINY_COUNT = 4
-const CAMERA_MOVE_MODIFIER = 0.1
-const CARTON_MOVE_MODIFIER = 0.5
+const CAMERA_MOVE_MODIFIER = 0.05
+const CARTON_MOVE_MODIFIER = 0.2
 
 class CanvasDriver {
     constructor() {
@@ -24,19 +24,19 @@ class CanvasDriver {
         this.scene = new THREE.Scene()
         this.balls = new THREE.Object3D()
         // this.scene.background = new THREE.Color( 0xf3e8ee )
-        this.scene.background = new THREE.Color( 0xe8e9f3 )
+        this.scene.background = new THREE.Color( 0x728C69 )
 
         const light = new THREE.DirectionalLight( 0xffffff );
         light.position.set( 0, 0, 1 );
         this.scene.add( light );
 
         
-        const radius = 25;
+        const radius = 20;
 
         const geometry1 = new THREE.IcosahedronGeometry( radius, 1 );
 
         const material = new THREE.MeshPhongMaterial( {
-            color: 0xbacdb0,
+            color: 0x1a2421,
             flatShading: true,
             vertexColors: true,
             shininess: 1
