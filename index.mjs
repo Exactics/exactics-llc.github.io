@@ -1,51 +1,58 @@
 import * as THREE from './lib/three.module.js'
 
-const BALL_COUNT = 30
-const SHINY_COUNT = 4
-const CAMERA_MOVE_MODIFIER = 1
-const CARTON_MOVE_MODIFIER = 1
+// Constants for the number of balls and modifiers for mouse to interface movement
+const BALL_COUNT = 30 // Number of balls to be created in the scene
+const SHINY_COUNT = 7 // Number of shiny balls to be created in the scene
+const CAMERA_MOVE_MODIFIER = 1 // Modifier for camera movement speed
+const CARTON_MOVE_MODIFIER = 1 // Modifier for carton movement speed
 
+// CanvasDriver class, responsible for managing the main 3D scene
 class CanvasDriver {
     constructor() {
-
+        // Initializing CartonDriver for a secondary 3D object
         this.carton = new CartonDriver()
-        // mouse setup
+        // Mouse setup with initial centered values
         this.mouse = {x: 0.5, y: 0.5}
-
+        
+        // Window dimensions for calculating half-width and half-height
         this.windowHalfX = window.innerWidth / 2;
         this.windowHalfY = window.innerHeight / 2;
 
+        // Selecting the canvas element for rendering
         this.canvas = document.querySelector('canvas#c')
 
-
+        // Setting up the perspective camera
         this.camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 10000 )
-        this.camera.position.z = 1800
+        this.camera.position.z = 1800// Positioning the camera in the scene
 
+       // Creating a new scene and object group for balls
         this.scene = new THREE.Scene()
         this.balls = new THREE.Object3D()
-        // this.scene.background = new THREE.Color( 0xf3e8ee )
+        // Setting the background color of the scene
         this.scene.background = new THREE.Color( 0x728C69 )
 
+       // Adding a directional light to the scene
         const light = new THREE.DirectionalLight( 0xffffff );
         light.position.set( 0, 0, 1 );
         this.scene.add( light );
 
         
+        // Defining geometry and materials for the balls
         const radius = 20;
-
         const geometry1 = new THREE.IcosahedronGeometry( radius, 1 );
 
         const material = new THREE.MeshPhongMaterial( {
-            color: 0x1a2421,
+            color: 0x4555954,
             flatShading: true,
             vertexColors: true,
-            shininess: 1
+            shininess: 2
         } );
 
         const wireframeMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: true, transparent: true } );
 
-        this.meshes = []
+        this.meshes = [] // Array to hold all ball meshes
 
+        // Creating ball meshes with wireframe material
         for (let i = 0; i < BALL_COUNT; i++) {
             this.meshes.push({
                 mesh: new THREE.Mesh(geometry1, wireframeMaterial),
@@ -55,6 +62,7 @@ class CanvasDriver {
 
         }
 
+        // Creating shiny ball meshes with solid material
         for (let i = 0; i < SHINY_COUNT; i++) {
             this.meshes.push({
                 mesh: new THREE.Mesh(geometry1, material),
@@ -64,6 +72,7 @@ class CanvasDriver {
 
         }
 
+        // Resetting position and other properties of each mesh
         for (let i = 0; i < this.meshes.length; i++) {
             this.reset_mesh(i)
 
@@ -79,15 +88,17 @@ class CanvasDriver {
             heading: new THREE.Vector3(0, 0, 0)
         }
 
+        // Adding all meshes to the balls group
         for (let i in this.meshes) {
             this.balls.add(this.meshes[i].mesh)
         }
+        // Adding the balls group to the scene
         this.scene.add(this.balls)
 
 
 
 
-        // renderer
+        // Setting up the renderer
         this.renderer = new THREE.WebGLRenderer( {
             antialias: true,
             canvas: this.canvas
@@ -96,7 +107,7 @@ class CanvasDriver {
         this.renderer.setSize( window.innerWidth, window.innerHeight )
 
     }
-
+    // Method to render the scene
     render() {
         
         // this.balls.rotation.x += ( this.mouse.x - this.balls.rotation.x ) * CAMERA_MOVE_MODIFIER;
@@ -107,11 +118,13 @@ class CanvasDriver {
 
         this.renderer.render( this.scene, this.camera );
     }
-
+    
+    // Animation loop for continuous rendering
     animate() {
-        requestAnimationFrame(this.animate.bind(this))
-        this.carton.animate()
+        requestAnimationFrame(this.animate.bind(this))// Recursively calls animate
+        this.carton.animate()// Animates the carton object
 
+        // Calculating target rotation based on mouse position
         const targetRotation = new THREE.Vector3(
             this.mouse.x * CAMERA_MOVE_MODIFIER,
             this.mouse.y * CAMERA_MOVE_MODIFIER,
@@ -123,29 +136,34 @@ class CanvasDriver {
             this.balls.rotation.z
         )
 
+        // Smoothly interpolates between current and target rotations
         currentRotation.lerp(targetRotation, 0.5)
 
+        // Updating balls rotation
         this.balls.rotation.x = currentRotation.x
         this.balls.rotation.y = currentRotation.y
         this.balls.rotation.z = currentRotation.z
         // this.balls.rotation.y = (this.mouse.y) * CAMERA_MOVE_MODIFIER
 
+        // Updating position and rotation of each mesh
         for (let i = 0; i < this.meshes.length ; i++) {
             this.meshes[i].mesh.position.add(this.meshes[i].heading)
             this.meshes[i].mesh.rotation.x += this.meshes[i].rotation.x
             this.meshes[i].mesh.rotation.y += this.meshes[i].rotation.y
             this.meshes[i].mesh.rotation.z += this.meshes[i].rotation.z
 
+            // Resetting the mesh if it reaches its target
             if (this.meshes[i].mesh.position.distanceTo(this.meshes[i].target) < 100) {
                 this.reset_mesh(i)
             }
         }
 
 
-        this.render()
+        this.render() //Render scene
 
     }
 
+    // Method to handle window resize
     on_window_resize() {
 
         this.windowHalfX = window.innerWidth / 2;
@@ -159,6 +177,7 @@ class CanvasDriver {
         this.carton.on_window_resize()
     }
 
+    // Method to reset the position and heading of a mesh
     reset_mesh(index) {
         const obj = this.meshes[index]
 
@@ -176,7 +195,7 @@ class CanvasDriver {
 
         obj.target = target.clone()
         // create a heading
-        const heading = target.sub(obj.mesh.position).normalize().multiplyScalar(2)
+        const heading = target.sub(obj.mesh.position).normalize().multiplyScalar(0.5)
 
         obj.heading = heading
 
@@ -184,7 +203,8 @@ class CanvasDriver {
         obj.mesh.material.opacity = 1
 
     }
-
+    
+    // Method to generate a new random heading
     make_new_heading() {
         return new THREE.Vector3(
             Math.random(),
@@ -193,7 +213,7 @@ class CanvasDriver {
         )
     }
 
-
+    // Method to handle mouse movement
     on_mouse_move(e) {
         this.mouse.x = (e.clientX / window.innerWidth)
         this.mouse.y = (e.clientY / window.innerHeight)
@@ -201,10 +221,11 @@ class CanvasDriver {
     }
 }
 
-
+// CartonDriver class manages a 3D carton object
 class CartonDriver {
     constructor() {
-
+        
+        // Selecting the canvas for the carton
         this.canvas = document.querySelector('canvas#carton')
         const rect = this.canvas.getBoundingClientRect()
         // box art
