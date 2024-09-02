@@ -3,7 +3,7 @@ import * as THREE from './lib/three.module.js'
 const BALL_COUNT = 50
 const SHINY_COUNT = 4
 const CAMERA_MOVE_MODIFIER = 0.05
-const CARTON_MOVE_MODIFIER = 0.2
+const CARTON_MOVE_MODIFIER = 0.02
 
 class CanvasDriver {
     constructor() {
