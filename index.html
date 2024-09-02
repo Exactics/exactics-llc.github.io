@@ -205,7 +205,7 @@
             text-decoration: none;
         }
 
-        /* Animated Background Canvas */
+        /* Canvas for Three.js Animated Background */
         #c {
             position: fixed;
             top: 0;
@@ -213,7 +213,11 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-color: #e0f7e9; /* Set the base color for the green animated background */
+            background-color: #e0f7e9; /* Base color for the green animated background */
+        }
+
+        #carton {
+            display: none; /* Hidden unless used */
         }
     </style>
 </head>
@@ -294,99 +298,34 @@
         </div>
     </footer>
 
-    <!-- Animated Background Canvas -->
+    <!-- Canvas for Three.js Animated Background -->
     <canvas id="c"></canvas>
+    <canvas id="carton"></canvas>
+
+    <!-- Include Three.js Library -->
+    <script type="module" src="./lib/three.module.js"></script>
+
+    <!-- Your JavaScript for the Three.js Scene -->
+    <script type="module">
+        // Place your entire JavaScript code here for the animated background
+        // The provided script is already good, just make sure it's loaded after Three.js is available
+        import * as THREE from './lib/three.module.js';
+
+        // Copy the entire JavaScript code you provided above here...
+
+        // Initialization of the CanvasDriver on window load
+        window.onload = () => {
+            window.cd = new CanvasDriver();
+            window.cd.animate();
+
+            window.onresize = () => cd.on_window_resize();
+            window.addEventListener('mousemove', e => cd.on_mouse_move(e));
+
+            window.waitlist_handler = new WaitlistSignup('#waitlist');
+        };
+    </script>
 
     <!-- External Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="index.mjs" type="module"></script>
-
-    <!-- JavaScript for Popup Functionality -->
-    <script>
-        var popup = document.getElementById("privacyPopup");
-        var btn = document.getElementById("openPrivacyPopup");
-        var span = document.getElementsByClassName("close")[0];
-
-        btn.onclick = function(event) {
-            event.preventDefault();
-            popup.style.display = "block";
-        }
-
-        span.onclick = function() {
-            popup.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == popup) {
-                popup.style.display = "none";
-            }
-        }
-    </script>
-
-    <!-- JavaScript for Animated Background -->
-    <script>
-        const canvas = document.getElementById('c');
-        const ctx = canvas.getContext('2d');
-        const balls = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        function Ball(x, y, vx, vy, radius) {
-            this.x = x;
-            this.y = y;
-            this.vx = vx;
-            this.vy = vy;
-            this.radius = radius;
-        }
-
-        Ball.prototype.draw = function() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-            ctx.fillStyle = 'rgba(0, 255, 0, 0.6)';
-            ctx.fill();
-        }
-
-        Ball.prototype.update = function() {
-            this.x += this.vx;
-            this.y += this.vy;
-
-            if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
-                this.vx = -this.vx;
-            }
-
-            if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
-                this.vy = -this.vy;
-            }
-
-            this.draw();
-        }
-
-        function init() {
-            balls.length = 0;
-            for (let i = 0; i < 50; i++) {
-                let radius = Math.random() * 20 + 5;
-                let x = Math.random() * (canvas.width - radius * 2) + radius;
-                let y = Math.random() * (canvas.height - radius * 2) + radius;
-                let vx = (Math.random() - 0.5) * 2;
-                let vy = (Math.random() - 0.5) * 2;
-                balls.push(new Ball(x, y, vx, vy, radius));
-            }
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            balls.forEach(ball => ball.update());
-        }
-
-        init();
-        animate();
-    </script>
 </body>
 </html>
