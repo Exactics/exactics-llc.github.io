@@ -1,19 +1,12 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <title>Exactics</title>
-
-
-
         <meta content="width=device-width, initial-scale=1" name="viewport">
-
         <link href="index.css" rel="stylesheet">
-
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
         <link rel="icon" type="image/png" href="/img/favicon.png">
         <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
 
@@ -31,7 +24,7 @@
               background-color: rgb(0,0,0); /* Fallback color */
               background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
             }
-        
+
             /* Popup content */
             .popup-content {
               background-color: #fefefe;
@@ -40,7 +33,7 @@
               border: 1px solid #888;
               width: 80%; /* Could be more or less, depending on screen size */
             }
-        
+
             /* Close button */
             .close {
               color: #aaa;
@@ -48,17 +41,36 @@
               font-size: 28px;
               font-weight: bold;
             }
-        
+
             .close:hover,
             .close:focus {
               color: black;
               text-decoration: none;
               cursor: pointer;
             }
+
+            /* Flex container for the QuickLyme section */
+            .section--quicklyme {
+              display: flex;
+              align-items: flex-start;
+              width: 100%; /* Ensure the section takes the full width */
+              max-width: 1200px; /* Adjust max width as needed */
+              margin: auto; /* Center the section */
+            }
+
+            /* Video container styles */
+            .video-container {
+              width: 560px; /* Fixed width for the video to match its aspect ratio */
+              margin-right: 20px; /* Space between the video and text */
+            }
+
+            /* Text container styles */
+            .section__container-text {
+              flex: 1; /* Allow the text container to take up the remaining space */
+            }
         </style>
 
-          <!-- HTML Meta Tags -->
-        
+        <!-- HTML Meta Tags -->
         <meta name="description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
 
         <!-- Facebook Meta Tags -->
@@ -75,33 +87,21 @@
         <meta name="twitter:title" content="Exactics">
         <meta name="twitter:description" content="Revolutionizing healthcare accessibility with the next generation of rapid diagnostics">
         <meta name="twitter:image" content="">
-
-        <!-- Meta Tags Generated via https://www.opengraph.xyz -->
     </head>
     <body>
         <nav>
-            <a class="nav__title"  href="https://exacticsbiotech.com/">
+            <a class="nav__title" href="https://exacticsbiotech.com/">
                 <img src="img/logo.svg" alt="exactics logo">
             </a>
             <div class="nav__buttons">
-                <!--
-                   <a 9class="nav__button" href="/about.html">
-                    Learn more
-                </a> 
-                -->
-                
-                <a class="nav__button" href="mailto:business@exacticsbiotech.com">
-                    Contact
-                </a>
+                <a class="nav__button" href="mailto:business@exacticsbiotech.com">Contact</a>
             </div>
         </nav>
 
         <main>
-
             <section class="section section--about">
                 <div class="section__container">
                     <h1 class="h1">About Us</h1>
-
                     <p>
                         In 2018, Julian Kage, CEO and Founder of Exactics, invented and patented 
                         QuickLyme, the first 15-minute rapid test for Lyme disease. He secured a 
@@ -109,100 +109,76 @@
                         arthropod-borne diseases, including Malaria, Zika, and Dengue Fever. This 
                         novel design enables easy antibody swaps, allowing for customizable tests 
                         across various diseases while keeping minimizing manufacturing costs.
-                        
                     </p>
-
-                    <br>
-                    <br>
+                    <br><br>
                     <b>Join our waitlist</b>
-
-                    <form class="waitlist__form " id="waitlist">
+                    <form class="waitlist__form" id="waitlist">
                         <input class="waitlist__input" required="true" type="email" placeholder="example@exacticsbiotech.com">
-                        <button type="submit" class="button">
-                            Join -->
-                        </button>
+                        <button type="submit" class="button">Join</button>
                     </form>
-                    <!-- Text with a hyperlinked word -->
-                    <p><small>By clicking 'Join', you agree to our <a href="#" id="openPrivacyPopup">Privacy Policy.</small></a></p>
+                    <p><small>By clicking 'Join', you agree to our <a href="#" id="openPrivacyPopup">Privacy Policy.</a></small></p>
 
                     <!-- The Popup -->
                     <div id="privacyPopup" class="popup">
-                    <div class="popup-content">
-                        <span class="close">&times;</span>
-                        <h2>Privacy Policy</h2>
-                        <div name="termly-embed" data-id="caa3a2f8-64b1-4dbc-9e9c-8aef65c06da5"></div>
-                        <script type="text/javascript">(function(d, s, id) {
-                          var js, tjs = d.getElementsByTagName(s)[0];
-                          if (d.getElementById(id)) return;
-                          js = d.createElement(s); js.id = id;
-                          js.src = "https://app.termly.io/embed-policy.min.js";
-                          tjs.parentNode.insertBefore(js, tjs);
-                        }(document, 'script', 'termly-jssdk'));</script>
-                    </div>
+                        <div class="popup-content">
+                            <span class="close">&times;</span>
+                            <h2>Privacy Policy</h2>
+                            <div name="termly-embed" data-id="caa3a2f8-64b1-4dbc-9e9c-8aef65c06da5"></div>
+                            <script type="text/javascript">
+                                (function(d, s, id) {
+                                  var js, tjs = d.getElementsByTagName(s)[0];
+                                  if (d.getElementById(id)) return;
+                                  js = d.createElement(s); js.id = id;
+                                  js.src = "https://app.termly.io/embed-policy.min.js";
+                                  tjs.parentNode.insertBefore(js, tjs);
+                                }(document, 'script', 'termly-jssdk'));
+                            </script>
+                        </div>
                     </div>
 
                     <script>
-                    // Get the popup
-                    var popup = document.getElementById("privacyPopup");
+                        var popup = document.getElementById("privacyPopup");
+                        var btn = document.getElementById("openPrivacyPopup");
+                        var span = document.getElementsByClassName("close")[0];
 
-                    // Get the button that opens the popup
-                    var btn = document.getElementById("openPrivacyPopup");
-
-                    // Get the <span> element that closes the popup
-                    var span = document.getElementsByClassName("close")[0];
-
-                    // When the user clicks on the button, open the popup
-                    btn.onclick = function(event) {
-                        event.preventDefault(); // Prevent default anchor behavior
-                        popup.style.display = "block";
-                    }
-
-                    // When the user clicks on <span> (x), close the popup
-                    span.onclick = function() {
-                        popup.style.display = "none";
-                    }
-
-                    // When the user clicks anywhere outside of the popup, close it
-                    window.onclick = function(event) {
-                        if (event.target == popup) {
-                        popup.style.display = "none";
+                        btn.onclick = function(event) {
+                            event.preventDefault();
+                            popup.style.display = "block";
                         }
-                    }
-                    </script>
-                    
 
-                    <!--a class="button" href="https://docs.google.com/forms/u/5/d/e/1FAIpQLSeY_iiFwvN6PSkLN4u1OBQrApbctioCAjvVvxPsybD1_1bUhg/viewform?usp=send_form">
-                        Join Our Waitlist-->
-                    </a-->
-                    
+                        span.onclick = function() {
+                            popup.style.display = "none";
+                        }
+
+                        window.onclick = function(event) {
+                            if (event.target == popup) {
+                                popup.style.display = "none";
+                            }
+                        }
+                    </script>
                 </div>
             </section>
 
+            <!-- QuickLyme Section -->
+            <section class="section section--quicklyme">
+                <!-- YouTube Video Embed -->
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-ClR1yWZf1s?si=JMawsX-WjT7kEnOj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
 
-           <section class="section section--quicklyme">
-    <div class="section__carton" style="opacity: 0;">
-        <span>BOX<br/>ART<br/>PLACEHOLDER</span>
-        <canvas id="carton"></canvas>
-    </div>
-    <div class="section__container" style="display: flex; align-items: flex-start;">
-        <!-- YouTube Video Embed -->
-        <div class="video-container" style="flex: 1; margin-right: 20px;">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/-ClR1yWZf1s?si=JMawsX-WjT7kEnOj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-
-        <div style="flex: 2;">
-            <h1 class="h1">QuickLyme&reg;</h1>
-            <p>
-                Julian Kage, CEO of Exactics, developed QuickLyme, a rapid test 
-                that detects Lyme bacteria in ticks within 15 minutes and secured a patent 
-                with support from the Ford Foundation. Julian leads Exactics alongside Zach 
-                Sarmoen (CFO), Dylan Murray (COO), Sean Greeby (CSO), and Max Almeida (CTO). 
-                Our advisory board includes experts from Harvard Medical School, the University 
-                of Chicago, Lagos State University, and the University of Ibadan.
-            </p>
-        </div>
-    </div>
-</section>
+                <!-- Text Container -->
+                <div class="section__container-text">
+                    <h1 class="h1">QuickLyme&reg;</h1>
+                    <p>
+                        Julian Kage, CEO of Exactics, developed QuickLyme, a rapid test 
+                        that detects Lyme bacteria in ticks within 15 minutes and secured a patent 
+                        with support from the Ford Foundation. Julian leads Exactics alongside Zach 
+                        Sarmoen (CFO), Dylan Murray (COO), Sean Greeby (CSO), and Max Almeida (CTO). 
+                        Our advisory board includes experts from Harvard Medical School, the University 
+                        of Chicago, Lagos State University, and the University of Ibadan.
+                    </p>
+                </div>
+            </section>
         </main>
 
         <footer>
@@ -216,8 +192,6 @@
                     Manchester, CT<br/>
                     06040
                 </div>
-            
-                
             </div>
         </footer>
 
@@ -225,9 +199,5 @@
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="index.mjs" type="module"></script>
-    
-        
-    
-    
     </body>
 </html>
